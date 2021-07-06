@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Toyota</h1>
+
+    <div>
+
+        {% for carro in CARROS %}
+            {% if carro.marcas == 'Toyota' %}
+                <img src="{{ carro.imagem.thumbnail.url }}" >
+                <p>{{ carro.nome }}</p>
+                <p>{{ carro.ano }}</p>
+                <p>{{ carro.motorizacao }}</p>
+                <p>{{ carro.quilometragem }}</p>
+                <p>{{ carro.estado}}</p>
+                <p>{{ carro.preco }}</p>
+
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <p><a href="{% url 'index' %}"> Voltar para a página principal! </a></p>
+</body>
+</html>

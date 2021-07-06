@@ -1,0 +1,5 @@
+/*css para modificar o link do produto que apresenta o modal*/
+/*formatação por TAG, a é a TAG do link*/
+a {
+    color: #fff;
+}

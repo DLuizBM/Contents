@@ -1,0 +1,5 @@
+Configurar a virtual env para instalar dependências e bibliotecas
+- No terminal do pycharm
+- mkvitualevn nome_da_virtualenv
+- Para sair do ambiente virtual: deactivate
+- Para entrar no ambiente virtual: workon nome_do_ambiente_virtual

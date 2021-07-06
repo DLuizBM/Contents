@@ -1,0 +1,63 @@
+Self no serializer
+def get_age_herdado(self, obj):
+
+            '''
+            print(self)
+            AdminSerializer(<QuerySet [<Admin: Divino>, <Admin: Luiz>, <Admin: Adriana>]>, context={'request': <rest_framework.request.Request object>, 'format': None, 'view': <core.views.AdminViewSet object>}):
+            nome = CharField(max_length=20)
+            status = CharField(max_length=20, required=False, write_only=True)
+            age_herdado = SerializerMethodField()
+
+            '''
+            print(dir(self))
+
+            ['Meta', '__class__', '__deepcopy__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_args', '_context', '_creation_counter', '_declared_fields', '_get_model_fields', '_kwargs', '_read_only_defaults', '_readable_fields', '_writable_fields', 'allow_null', 'bind', 'build_field', 'build_nested_field', 'build_property_field', 'build_relational_field', 'build_standard_field', 'build_unknown_field', 'build_url_field', 'context', 'create', 'data', 'default', 'default_empty_html', 'default_error_messages', 'default_validators', 'error_messages', 'errors', 'fail', 'field_name', 'fields', 'get_age_herdado', 'get_attribute', 'get_default', 'get_default_field_names', 'get_extra_kwargs', 'get_field_names', 'get_fields', 'get_initial', 'get_unique_for_date_validators', 'get_unique_together_validators', 'get_uniqueness_extra_kwargs', 'get_validators', 'get_value', 'help_text', 'include_extra_kwargs', 'initial', 'instance', 'is_valid', 'label', 'many_init', 'parent', 'partial', 'read_only', 'required', 'root', 'run_validation', 'run_validators', 'save', 'serializer_choice_field', 'serializer_field_mapping', 'serializer_related_field', 'serializer_related_to_field', 'serializer_url_field', 'source', 'source_attrs', 'style', 'to_internal_value', 'to_representation', 'update', 'url_field_name', 'validate', 'validate_empty_values', 'validated_data', 'validators', 'write_only']
+
+            print(obj)
+            Divino
+            Luiz
+            Adriana
+
+def create(self, validated_data):
+print(self)
+PersonSerializer(context={'request': <rest_framework.request.Request object>, 'format': None, 'view': <core.views.PersonViewSet object>}, data=<QueryDict: {'csrfmiddlewaretoken': ['SrWXA4ANG2O47f2HlY4Zt0hyAkv13iDaPWTuEeuFAMBF7fZBtLCo0D2B80yWjb2y'], 'name': ['6'], 'age': ['40']}>):
+    name = PrimaryKeyRelatedField(queryset=Admin.objects.all(), validators=[<UniqueValidator(queryset=Person.objects.all())>])
+    age = CharField(max_length=3, required=False)
+    status_herdado = SerializerMethodField()
+
+print(dir(self))
+['Meta', '__class__', '__deepcopy__', '__delattr__', '__dict__', '__dir__',
+ '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__',
+  '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__',
+  '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+   '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__',
+   '__weakref__', '_args', '_context', '_creation_counter', '_declared_fields',
+   '_errors', '_get_model_fields', '_kwargs', '_read_only_defaults',
+   '_readable_fields', '_validated_data', '_validators', '_writable_fields',
+   'allow_null', 'bind', 'build_field', 'build_nested_field', 'build_property_field', 'build_relational_field', 'build_standard_field', 'build_unknown_field', 'build_url_field', 'context', 'create', 'data', 'default', 'default_empty_html', 'default_error_messages', 'default_validators', 'error_messages', 'errors', 'fail', 'field_name', 'fields', 'get_attribute', 'get_default', 'get_default_field_names', 'get_extra_kwargs', 'get_field_names', 'get_fields', 'get_initial', 'get_status_herdado', 'get_unique_for_date_validators', 'get_unique_together_validators', 'get_uniqueness_extra_kwargs', 'get_validators', 'get_value', 'help_text', 'include_extra_kwargs', 'initial', 'initial_data', 'instance', 'is_valid', 'label', 'many_init', 'parent', 'partial', 'read_only', 'required', 'root', 'run_validation', 'run_validators', 'save', 'serializer_choice_field', 'serializer_field_mapping', 'serializer_related_field', 'serializer_related_to_field', 'serializer_url_field', 'source', 'style', 'to_internal_value', 'to_representation', 'update', 'url_field_name', 'validate', 'validate_empty_values', 'validated_data', 'validators', 'write_only']
+
+Self na View
+print(self)
+<core.views.PersonViewSet object at 0x7fd3b01cce10>
+print(dir(self))
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__',
+ '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__',
+ '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__',
+ '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__',
+ '__weakref__', '_allowed_methods', '_negotiator', '_paginator', 'action', 'action_map', 'allowed_methods',
+  'args', 'as_view', 'authentication_classes', 'basename', 'check_object_permissions', 'check_permissions',
+   'check_throttles', 'content_negotiation_class', 'create', 'default_response_headers', 'description',
+   'destroy', 'detail', 'determine_version', 'dispatch', 'filter_backends', 'filter_queryset',
+   'finalize_response', 'format_kwarg', 'get', 'get_authenticate_header', 'get_authenticators',
+   'get_content_negotiator', 'get_exception_handler', 'get_exception_handler_context',
+   'get_extra_action_url_map', 'get_extra_actions', 'get_format_suffix', 'get_object',
+   'get_paginated_response', 'get_parser_context', 'get_parsers', 'get_permissions',
+   'get_queryset', 'get_renderer_context', 'get_renderers', 'get_serializer', 'get_serializer_class',
+   'get_serializer_context', 'get_success_headers', 'get_throttles', 'get_view_description',
+   'get_view_name', 'handle_exception', 'head', 'headers', 'http_method_names',
+   'http_method_not_allowed', 'initial', 'initialize_request', 'kwargs', 'list', 'lookup_field',
+   'lookup_url_kwarg', 'metadata_class', 'name', 'options', 'paginate_queryset', 'pagination_class',
+   'paginator', 'parser_classes', 'partial_update', 'perform_authentication', 'perform_content_negotiation', 'perform_create',
+   'perform_destroy', 'perform_update', 'permission_classes', 'permission_denied', 'post', 'queryset',
+   'raise_uncaught_exception', 'renderer_classes', 'request', 'response', 'retrieve', 'reverse_action',
+    'schema', 'serializer_class', 'settings', 'setup', 'suffix', 'throttle_classes', 'throttled', 'update', 'versioning_class']

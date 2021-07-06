@@ -1,0 +1,137 @@
+- Sempre que iniciar um projeto django, fazer a instalação do django e das bibliotecas
+- pip install django
+- Nesse projeto já serão adicionadas algumas bibliotecas
+    - whitenoise -> biblioteca para publicação, que apresenta os arquivos estáticos
+    - gunicorn -> servidor feito para rodar aplicações python
+    - django-bootstrap4 -> forma mais fácil de usar o bootstrap
+    - PyMySQL -> driver de conexão de dados com MySQL
+    - django-stdimage -> aplicação que facilita a utilização de imagens
+# comando: pip install django whitenoise gunicorn django-bootstrap4 PyMySQl django-stdimage
+# comando: pip freeze > requirements.txt: cria um arquivo txt com todas as bibliotecas utilizadas no projeto
+
+-PARA CRIAR O PROJETO
+-comando: django-admin startproject django2 . -> espaço . faz com que o django não crie outros subdiretótrios
+
+-PARA CRIAR A APLICAÇÃO
+- comando:  django-admin startapp core
+
+-CONFIGURANDO O ARQUIVO SETTINGS
+- ALLOWED_HOSTS = ['*'] -> '*' Para funcionar com qualquer host
+
+-CONFIGURANADO O INSTALLED_APPS
+- INSTALLED_APPS = [
+    COLOCAR AS APLICAÇÕES QUE VÃO SER TRABALHADAS ALÉM DAS PADRÕES
+    'core',
+    'bootstrap4',
+    'stdimage',
+  ]
+
+-CONFIGURANDO O MIDDLEWARE
+- MIDDLEWARE = [
+    ALÉM DOS PADRÕES, COLOCAR WHITENOISE(só é necessário no momento da publicação, nesse momento tirar o #)
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
+  ]
+
+-CONFIGURANDO O ARQUIVO TEMPLATES = 'DIRS'
+-DIRS = ['templates'] -> avisa o python que será utilizado um diretório chamado templates, que vai ficar dentro de aplicações
+
+-CONFIGURANDO O DATABASES
+- DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', # informando o banco de dados
+        'NAME': 'django2',                    # nome do banco de dados
+        'USER': 'divino',                     # usuário do banco de dados
+        'PASSWORD': 'divino',                 # senha do usuário
+        'HOST': 'localhost',                  # host do banco(não é obrigatório)
+        'PORT': '3306',                       # porta do mysql
+    }
+}
+
+-CONFIGURANDO A LINGUAGEM E TIME ZONE
+- LANGUAGE_CODE = 'pt-br'
+- TIME_ZONE = 'America/Sao_Paulo'
+
+-ADICIONAR
+- STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+- utilizado durante a produção, coleta todos os arquivos estáticos da aplicação e coloca aí dentro
+
+-IMPORTANTE: CRIAR O BANCO DE DADOS MYSQL
+-Instalar o MySQLWorkbench;
+-Instalar o MySQL-Server
+-https://www.youtube.com/watch?v=VHKmD41jzEk
+-https://linuxconfig.org/install-mysql-on-ubuntu-18-04-bionic-beaver-linux
+-   sudo apt install mysql-server
+    sudo mysql_secure_installation
+    Edite mysqld.cnf e mude bind-address para 0.0.0.0 com o comando:
+    sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+    sudo service mysql restart
+    sudo mysql -u root
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'SuaSenha';
+-Senha do banco: Info@1234
+-No ubuntu talvez seja necessário rodar o seguinte comando:
+    sudo apt-get install libmysqlclient-dev python3-dev
+-pip install MySQL -> ficar atendo para ver se tudo vai funcionar sem esse comando(no vídeo foi utilizado), mas aqui no terminal não funcionou
+-um erro estava sendo apresentado ao tentar instalar pip install mysqlclient e pip install MySQL:fatal error: Python.h: No such file or directory
+ foi resolvido com: sudo apt-get install python3.8-dev, importante colocar a versão do python, nesse caso a 3.8
+ rodar esse comando após sudo apt-get install libmysqlclient-dev python3-dev.
+- criar o banco de dados no MySQL workbench
+- Após entrar no MySQL workbench: CREATE DATABASE nome_do_banco;
+- clicar no 'raio' para criar o banco
+
+# Passos adotados no projeto
+1 - Definir as views
+2 - criar os templates (nas páginas html, configurar a linguagem em pt-br)
+3 - criar o diretório static(css, js e imagens)
+4 - configurar as rotas(lembrar que cada aplicação deve ter sua rota)
+   - em django2 urls.py adicionar os seguintes diretótios
+    from django.contrib import admin
+    from django.urls import path, include
+   - criar em core(para cada aplicação) o arquivo urls.py
+   - importar dentro desse arquivo
+    from django.urls import path
+    from .views import index,contato,produto (importar todas as views)
+   - criar o urlpatterns=[] de todas as views
+5 - Rodar o comando (fazer a migrate/ MAKE MIGRATE): python manage.py migrate
+   IMPORTANTE: OS DADOS DO USUÁRIO DO BANCO DE DADOS CRIADO DEVE TER AS MESMAS INFORMAÇÕES
+   NO ARQUIVO SETTINGS.PY E NO USUÁRIO CRIADO NO WORKBENCH.
+   No workbench foi criado um banco de dados com nome divino, porém o usuário é root e a senha é Info@1234
+   esse usuário e senha devem estar no arquivo settings.py
+6 - Criar o super usuário: python manage.py createsuperuser
+7 - rodar a aplicação para ver se as rotas estão corretas: python manage.py runserver
+8 - Criação de formulários, todos os formulários ficam no arquivo forms.py da aplicação
+   Após criar o formulário, importar na view esse formulário
+   Exemplo: foi criado o formulário de contato, após isso e chamá-lo na view, deve trabalhar na página html.
+   Aqui foi carregado o css e feito suas configurções
+
+9 - Envio de emails: Pra enviar emails é necessário um servidor de email (é possível instalar e configurar ou contratar um)
+    Quando não se tem um servidor de email é possível testar no próprio django e ver se a aplicação está correta
+    Em settings deve-se colocar a seguinte linha
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    esse comando simula e imprime no console o email
+    Quando se tem um servidor de emails, basta adicionar as seguintes linhas
+    EMAIL_HOST = 'localhost'
+    EMAIL_HOST_USER = 'no-reply@seudominio.com'
+    EMAIL_PORT = 587
+    EMAIL_USER_TSL = True -> criptografado
+    EMAIL_HOST_PASSWORD = 'suasenha'
+
+10 - Criação das models -> as models são importantes pra fazer a conexão com os formulários e o banco de dados
+# OBS: na seção anterior as models eram trabalhadas na área administrativa(página admin)(era um tipo de formulário)
+# agora seram feitas models para conectar os formulários criados(nossos formulários) com o banco de dados
+    - Toda vez que se cria uma model deve-se criar a migration
+    - comando: python manage.py makemigrations
+    - Depois deve-se realizar a migração
+    - comando: python manage.py migrate
+
+# OBS: há 2 tipos de formulários, os forms que não tem conexão com o banco de dados e o Modelforms
+que tem uma integração com o Model para que seja possível salvar dados no banco de dados
+- Cria-se um modelform dentro do arquivo forms.py
+- Logo após são feitas as configurações na view para linkar ao html
+- quando se tem arquivos de upload, é criado um diretótio(nesse programa, chamado de produtos, onde as imagens estão salvas).
+  Porém, isso não é o correto, o correto é fazer uma configuração no arquivo settings com as seguintes linhas:
+  MEDIA_URL = 'media/'
+  MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+  esses diretótios são usados para upload, seja de imagens, arquivoz zipados, etc
+
+11 - Apresentação dos produtos na tela principal (index)
+- Carregar os arquivos bootstrap

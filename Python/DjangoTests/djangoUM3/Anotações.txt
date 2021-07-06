@@ -1,0 +1,38 @@
+68 - Customizando um User Model
+- Criar a model com as alterações
+- Criar os fomulários de criação e alteração
+- Adicionar os campos de formulário no admin
+- Quando o usuário é padrão no django, ele já cria os formulário de criação e alteração
+colocar esses formulários no admin, faz todo o processo "por baixo do panos", mas
+quando o usuário é customizado, deve-se criar formulário, adicioná-los no admin em
+add_form: formulário de criação
+form: formulário de alteração
+model: model do usuário
+fieldsets: para mostrar campos necessário
+Os campos que serão apresentados no momento de criação do super usuário (python manage.py create_superuser)
+E-mail: marcelo@gmail.com
+First name: Marcelo
+Last name: Moreira
+Telefone: 999999999
+Password:
+Password (again):
+
+Aula 69 - Login e autenticação
+- Templates com rotas do próprio django e não da aplicação
+from django.urls import get_resolver
+from pprint import pprint
+pprint(get_resolver().url_patterns[0].url_patterns)
+[<URLPattern '' [name='index']>,
+ <URLPattern 'login/' [name='login']>,
+ <URLPattern 'logout/' [name='logout']>,
+ <URLPattern 'password_change/' [name='password_change']>,
+ <URLPattern 'password_change/done/' [name='password_change_done']>,
+ <URLPattern 'jsi18n/' [name='jsi18n']>,
+ <URLPattern 'r/<int:content_type_id>/<path:object_id>/' [name='view_on_site']>,
+ <URLResolver <URLPattern list> (None:None) 'auth/group/'>,
+ <URLResolver <URLPattern list> (None:None) 'usuarios/customusuario/'>,
+ <URLPattern '^(?P<app_label>auth|usuarios)/$' [name='app_list']>],
+ - Estamos trabalhando agora, não com rotas da aplicação e sim do projeto
+ - por isso o diretório templates foi criado no projeto e não na aplicação
+- criar o diretório registratio e a página login e fazer as alterações no settings
+- informando pra onde deve-se ir

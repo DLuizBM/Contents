@@ -1,0 +1,29 @@
+66 - Entendendo o django User Model
+from django.contrib.auth.models import User
+- dentro de User model temos objects
+- e dentro de objects: all(), create(), aggregate(), filter(), etc
+- olhar a documentação para saber se determinada função já salva os objetos no banco de dados
+- se não, objeto.save()
+- - tem is_staff e is_superuser igual a false
+- is_staff = true, significa que pode acessar a área administrativa, mas não é administrador
+
+# Criando um usuário administrador no python shell
+divino = User.objects.create_user(username='divinoluizbarbosa', password='123456', email='divino@gmail.com', is_staff=True, is_superuser=True)
+# notar que na documentação não é obrigatório definir is_staff e is_superuser
+# mas aqui foi definido, e esses são atributos que não estão na documentação de create_user
+
+
+from django.contrib.auth.models import UserManager
+- Usuário gerenciador, administrador
+- tem is_staff e is_superuser igual a true
+
+OBS: criptografando senhas no terminal
+echo '123456' | md5sum
+
+67 - Estendendo o Django User Model
+- Criar uma aplicação e fazer as configurações
+- Integração pela models com User
+- Permitir que apenas o usuário logado veja apenas seus posts
+- Permitir que o usuário logado crie posts apenas no seu login
+- mudar as configurações do admin para mostrar novas mensagens nas configurações
+- do Django(Mudar em urls.py)

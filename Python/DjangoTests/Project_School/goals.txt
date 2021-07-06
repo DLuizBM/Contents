@@ -1,0 +1,52 @@
+O que deve ser aprendido?
+# Revisar conteúdos
+
+# Função do related_name
+- class Employee(models.Model):
+    name = models.CharField(...)
+- class Address(models.Model):
+    user = models.OneToOneField(Employee, on_delete=models.CASCADE, related_name='address')
+    country = ...
+    state = ...
+- o related_name cria na classe Employee o atributo "address", dessa forma a classe Address é passada inteira como atributo
+- sendo possível consultar o country e state pela class Employees. 
+- user = Employees.objects.get(id=1)
+- user.address
+- user.address.country
+- devolve o país a qual pertence o Employee de id=1 
+
+# Testar a criação de atributos pelo serializer
+# Busca de objetos pelo serializer
+# Estudo de caso comparando com o englishbay
+
+# Entender o model User
+- O moderl User é para manipular os usuários que podem manipular o sistema, com todo sistema de autenticação
+- no python shell é possível buscar as informações do usuário
+- from django.contrib.auth.models import User
+- usuario = User.objects.all()
+- retornará uma queryset com todos os usuário no sistema
+- usuario = User.objects.get(pk=1)
+- pega o usuário com pk=1
+
+ name = models.ForeignKey(User, verbose_name='Name', on_delete=models.CASCADE)
+        def __str__(self):
+        return self.name.username
+- return self.name.username, retorna-se assim, pois name não é atributo, é um objeto. 'username' é um atributo 
+
+# 02/06/2020
+- O get_queryset(self), é um método criado automaticamente quando se usa as viewsets, eles faz o envio padrão
+- quando se deseja modificar a forma de envio, filtrando, excluindo, etc, aí deve-se fazer o método manualmente
+
+def get_queryset(self):
+       qs = super(AdminsViewSet, self).get_queryset()  # igual a qs = super().get_queryset()
+       # super() faz com tenhamos acesso aos métodos de outra classe, no caso o método que estamos acessando é o get_queryset()
+       print(qs)
+       # <QuerySet [<Admins: divinoluiz>]>
+       return qs
+
+# Criar atributos no serializer:
+- herdando de outro serializer
+address = AddressSerializer()
+- criando o atributo
+email = serializers.CharField()
+

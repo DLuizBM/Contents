@@ -1,0 +1,28 @@
+{% load bootstrap4 %} <!--carregando o bootstrap -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato</title>
+    {% bootstrap_css %} <!-- configurando o bootstrap// arquivos css são carregados no head  -->
+</head>
+<body>
+    <div class="conteiner">
+    <h1>Contato</h1>
+        {% bootstrap_messages %}
+        <form action="{% url 'contato' %}" method="post" class="form" autocomplete="off">
+            <!--action = usuário vai clicar no botão e ação desse botão é pegar os dados e enviar para a url 'contato'-->
+            <!--method = o método de envio é o post, para enviar os dados, deve ser especificado, pois por padrão formulários enviam dados com GET-->
+            <!--class = a classe form está vindo do bootstrap-->
+            <!--autocomplete = impede que os dados anteriores de outras pessoas sejam mostrados-->
+            {% csrf_token %} <!--Recurso de segurança do django para validar formulários, sem isso o formulário nunca será válido-->
+            {% bootstrap_form form %} <!--o form é o que está sendo enviado pelo context na view, com esse comando, está sendo aplicado css no form-->
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            {% endbuttons %}
+        </form>
+    </div>
+{% bootstrap_javascript jquery='full' %} <!-- configurando o bootstrap -->
+
+</body>
+</html>

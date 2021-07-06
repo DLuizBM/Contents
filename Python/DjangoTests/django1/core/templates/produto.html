@@ -1,0 +1,17 @@
+{% load static %} <!--Não esquecer de carregar os arquivos estáticos, pois ocorrerão problemas para abrir imagens por exemplo-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Produto</title>
+</head>
+<body>
+    <p><a href="{% url 'index' %}" > {{produto}}</a>  </p>
+    {% if produto.nome == 'BMW 320i' %}
+        <p>Este é um execelente carro!</p>
+        <img src="{% static 'images/bmw.jpg' %}">
+    {%endif%}
+
+    <!--index depois de url é o name='index' no arquivo core.urls-->
+</body>
+</html>

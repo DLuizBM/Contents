@@ -1,0 +1,140 @@
+# Projeto com REST
+# Como o REST roda no topo é necessário instalar o django primeiro
+# comando: pip install django==2.2.9
+# versão 2.2.9, pois essa versão tem suporte por mais tempo
+# importante usar o varsão 3.7 do python também, aqui foi usada a 3.8
+# mas para projetos futuros, usar a 3.7
+
+1 - Criar o projeto
+# django-admin startproject escola .
+
+2 - Criar a aplicação
+# django-admin startapp cursos
+
+3 - Fazer as configurações no arquivo settings
+# Aqui vamos trabalhar na parte de API's
+# adicionar as aplicações, arquivos de media e arquivos estáticos
+
+4 - Criação de models e arquivo admin
+# Logo após, fazer as migrations
+# python manage.py makemigrations
+# python manage.py migrate
+# python manage.py createsuperuser
+
+# Após o projeto django estar pronto, cria-se a API
+# Para instalar a API: pip install djangorestframework
+# Para instalar a documentação: pip install markdown
+# Facilita a utilização de filtros: pip install django-filter
+# pip install djangorestframework markdown django-filter
+
+5 - Configurar o arquivo settings:
+-Em INSTALLED_APPS com:
+    'django_filters'
+    'rest_framework'
+-As configurações do DRF
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        # autenticação por sessão
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        # permite ao cliente autenticado na API, criar dados, ler dados, atualizar dados e deletar dados
+        # se não é autenticado, pode apenas ler
+    ),
+
+}
+
+6 - Configurar as rotas
+# path('auth/', include('rest_framework.urls')),
+# para acessar deve-se fazer auth/login
+
+7 - Criar o arquivo serializers na aplicação
+# Serializer serve para transformar Dicionários/Objetos em JSON
+# E JSON em dicionários/objetos python
+# string binária: python passa o dicionário para string binário e só depois
+# para JSON
+
+8 - Quando estamos trabalhando com API's, deve-se usar o APIview, para construir as views
+9 - Após prontas as views, deve-se criar as rotas na aplicação
+10 - Após criadas as views da API, quando for acessada a aplicação, se o usuário
+estiver logado, ele pode fazer tudo, como especificado no arquivo settings, e ele poderá
+preencher um formulário colocando o título do curso e a url, tudo no formato JSON. Caso contrário
+só poderá ler o conteúdo.
+
+
+OBS: mixins estão relacionados com classed based views
+
+AULA 20 - Sobrescrevendo métodos genéricos
+- passar ID do curso e pegar todas as avaliações do curso
+- sobrescrever o método get_queryset(), esse método traz uma lista de objetos
+
+AULA 21 - ViewSets e routers
+-Routers: é um recurso do DRF para automatizar a criação de endpoints para API
+-ViewSet: permite agrupar toda lógica de um determinado recurso em uma única classe.
+Ex: ao invés de utilizar um recurso para listar e buscar e outro para atualizar e deletar,
+com a viewset é possível fazer isso em uma única classe, que é a viewset. Além disso com a viewset,
+os endpoints já são automaticamente criados.
+
+AULA 23 - Relações com DRF
+- Nested Relantionship
+    - Se houver muitas avaliações para um curso(caso dessa api)
+    - a api vai ter problemas de performace
+
+- HYPERLINKED RELATED FIELD: Usado quando há milhares de dados
+- Primery key Related field: Devolve o id do que esta sendo consultado, é mais performático
+
+AULA 24 - Paginação
+- Em setting.py
+- REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2 # exemplo de 2 elementos por página, só existe um tipo de paginação
+}
+
+AULA 27 - Autenticação via Token
+- Em INSTALLED_APPS = [
+        'rest_framework.authtoken'
+     ]
+- Sempre que INSTALLED_APPS é mudado, deve-ser fazer uma migração
+- Em REST_FRAMEWORK = {
+        'rest_framework.authentication.TokenAuthentication',
+    }
+Como criar o token de forma manual:
+
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+
+Divino = User.objects.get(id=1)
+print(Divino.username)
+print(Divino.email)
+token = Token.objects.create(user=Divino)
+print(token)
+1dff438004ba499ca8e466f28fead4426a62adb4
+
+- trabalhando com o insomnia
+
+28 - Fazendo o uso de permissões
+- Criando a própria classe de permissão
+
+29 - Limitando o número de requisições com Throttling
+- Throttling é responśavel por controlar o número de requisições das apis views
+'DEFAULT_THROTTLE_CLASSES': (
+    'rest_framework.throttling.AnonRateThrottle',
+    'rest_framework.throttling.UserRateThrottle',
+)
+'DEFAULT_THORTTLE_RATES': {
+        'anon': '5/minute',
+        'user': '10/minute',
+}
+- Para saber a contagem de requisições, o django usa um recurso de cash que pode ser usado
+no desenvolvimento, porém se usado com muita frequência não é muito performático. Para produção
+é recomendado o banco de dados Reds, que é um banco de dados em memória perfomático que dentre
+suas funcionalidades é usado como cash.
+
+30 - Customizando validação de dados.
+Ex: Os cursos dessa API só podem ser avaliados de 1 a 5, porém da forma que está
+o usuário pode avaliar com notas maiores e isso está errado.
+É possível fazer a validação de dados na model, como mostrado no curso de django
+Porém, como estamos trabalhando com API, podemos fazer a validação também no serializer.
+
+31 - Customizando a serialização dos dados

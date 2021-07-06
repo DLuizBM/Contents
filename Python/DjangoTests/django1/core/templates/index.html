@@ -1,0 +1,27 @@
+{% load static %} <!--sempre carregar os arquivos estáticos -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django 1 - Index</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+    <!--informando de onde se deve buscar o arquivos css-->
+</head>
+<body>
+    <h1>Página raiz</h1>
+    <h2>Página modificada</h2>
+    
+    <button onclick="aperta()">Aperte o botão.</button>
+    <h2> {{ aprender }}</h2>
+    <p>{{django}}</p>
+    
+        <img src="{% static 'images/bmw.jpg' %}">
+        <!-- % deve estar encostado nas {}-->
+    {% for produto in produtos %}
+        <p><a href="{% url 'produto' produto.pk %}" > {{produto}}</a>  </p>
+        <!-- Criando um link para o produto, crie uma rota chamada produto e como parâmetro o id(para identificar aquele produto-->
+        <!-- o 'produto' depois de url é o name='produto' no arquivo core.urls-->
+    {% endfor %}
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

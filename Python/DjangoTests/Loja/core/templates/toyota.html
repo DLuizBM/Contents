@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Toyota</h1>
+
+    {% for car in CARROS %}
+        {% if car.marca.nome == 'Toyota' %}
+        <!--como marca é um atributo vindo da Classe Marca para a Classe carro,
+        para acessar o nome da marca deve-se usar car.marca.nome-->
+        <img src="{{ car.imagem.thumbnail.url }}">
+        <p> {{ car.modelo }} </p>
+        <p> {{ car.ano }}</p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

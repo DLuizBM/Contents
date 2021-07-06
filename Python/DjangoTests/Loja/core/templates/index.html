@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>+CAR</h1>
+    <h2>Escolha a sua marca!!</h2>
+
+    {% for marca in MARCAS %}
+
+        {% if marca.nome == 'Toyota' %}
+        <a href="{% url 'toyota' marca.pk %}" >{{ marca.nome }}</a>
+        {% endif %}
+
+        {% if marca.nome == 'Honda' %}
+        <a href="{% url 'honda' marca.pk %}" >{{ marca.nome }}</a>
+        {% endif %}
+
+        {% if marca.nome == 'Volkswagen' %}
+        <a href="{% url 'volkswagen' marca.pk %}">{{ marca.nome }}</a>
+        {% endif %}
+
+    {% endfor %}
+
+
+</body>
+</html>

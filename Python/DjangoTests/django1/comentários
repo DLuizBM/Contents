@@ -1,0 +1,52 @@
+VIEWS
+# Quem possui views são somente as aplicações, são elas que são programadas para que
+# o MTV(mvc em outras linguagens) do django funcione.
+# quando se muda no arquivo settings.py o DEBUG para False, o python procura em views
+# uma função(view) chamada index, uma view django é uma função.
+
+URLS
+# São rotas para acessar as views
+# Só quem possui url é o projeto e não a aplicação (inicialmente)
+# Não é ideal criar no arquivo de rotas principal(urls do projeto), todas as rotas do projeto
+# o ideal é que para cada aplicação seja feito um arquivo de rota.
+
+TEMPLATES
+# Assim como nas urls, cada aplicação deve ter seus templates.
+# Toda alteração feita no template é a partir da view, na função que se deseja alterar
+# e chamando no html
+
+MODELS
+# O projeto não tem o arquivo models.py, quem possui model, são as aplicações
+# Models, são os modelos de dados, atráves do models que é possível persistir dados(trabalhar com o banco de dados)
+# o próprio django cria estrutura de tabelas, faz o mapeamento do model com o banco de dados
+# e então é possível usar o banco de dados como se fosse um objeto python.
+# Deve-se criar as migrations, quando se trabalha com as models. python manage.py makemigrations
+# (ela criar arquivos identificados, 0001_initial, sendo possível retornar em versões anteriores)(por padrão o banco de dados é o sqlite3)
+# após criar, deve-se executar a migrate    (aplicar ela), python manage.py migrate
+# A cada modelo criado, deve-se fazer a migration novamente(models. python manage.py makemigrations) e executar a migration (python manage.py migrate)
+
+ADMIN
+# Interface admin
+# Administrador do projeto (python manage.py createsuperuser)
+# Quando é criada uma aplicação, é criado um arquivo admin.py, para que seja
+# registrada na administração os modelos
+
+SHELL
+# Com o shell é possível trabalhar cada parte do projeto e da aplicação, pelo terminal
+# python manage.py shell
+# exemplo de uso: from core.models import Produto
+# produto = Produto(nome='BMW 320i', preco=179990.00, estoque=1)
+# produto.save()
+# Esse exemplo mostra como adicionar um novo produto na aplicação pelo shell
+
+# PK
+# primary key -> funciona como um identificador único de cada entrada em um banco de dados
+
+# Variável DEBUG e o static files
+# Se debug está false deve-se usar o comando python manage.py collectstatic, para criar o diretório staticfiles
+# de onde a aplicação vai buscar todos os arquivos estáticos
+# Por padrão o servidor do django não consegue servir arquivos estáticos durante o modo de produção(Debug false)
+# pois no modo de produção é necessário se preocupar com desempenho e segurança
+
+# Tratar erros 404/500 etc
+# o django tem configuração para tratar esse tipo de erro

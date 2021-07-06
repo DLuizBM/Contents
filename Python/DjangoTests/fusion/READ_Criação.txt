@@ -1,0 +1,139 @@
+# Projeto fusion
+-Etapas
+1 - Instalar bibliotecas e dependências
+- pip install django
+- pip install psycopg2-binary (para trabalhar com banco de dados postgre
+- pip install gunicorn
+- pip install dj-static (para arquivos estáticos)
+- pip install django-stdimage
+- pip freeze > requirements.txt
+
+2 - criar o projeto: django-admin startproject nome_do_projeto .
+3 - criar a aplicação: django-admin startapp nome_da_aplicação
+4 - Configurar o settings.py
+    ALLOWED_HOSTS = ['*']
+    INSTALLED_APPS = [
+    #adicionar as aplicações
+        'core',
+    ]
+    TEMPLATES = [
+    {
+        'DIRS' = ['templates'] # na aplicação o diretório template é diferente do dir templates
+    }
+    ]
+5 - configurar o banco de dados: postgresql usado nessa aplicação
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fusion',
+        'USER': 'root',
+        'PASSWORD': 'Info@1234',
+        'HOST': 'localhost',
+        'PORT': '5432', # porta do postgresql
+    }
+}
+
+5 - configurar o idioma:
+LANGUAGE_CODE = 'pt-br'
+
+TIME_ZONE = 'America/Sao_Paulo'
+
+6 - configurar o static e media:
+STATIC_URL = '/static/'
+MEDIA_URL = 'media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+7 - criar as urls
+importar
+from django.urls import path, include
+from django.contrib import admin
+from django.conf.urls.static import static # para fazer as configurações de mídia
+from django.conf import settings    #  para fazer as configurações de mídia
+# import setting permite que busquemos dados do arquivo settings
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('core.urls'))
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# MEDIA_URL e MEDIA_ROOT são os valores dessa variáveis no arquivo settings.py
+
+8 - criar o arquivo url para cada aplicação
+from django.urls import path
+urlpatterns = [
+]
+
+9 - Configurando o banco de dados postgreSQl
+https://www.postgresql.org/download/linux/ubuntu/
+No terminal - ter o gedit instalado
+- sudo gedit /etc/apt/sources.list.d/pgdg.list(esse caminho tem no site)
+- colar e salvar no arquivo -> deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+- no terminal -> wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+- no terminal -> sudo apt-get install postgresql-11
+- no terminal -> sudo apt install pgadmin4
+- configurando a senha;
+    sudo su – postgres
+    psql -d postgres -U postgres
+    alter user postgres with password ‘Info@3004’;
+# https://startdb.info/2019/12/postgresql-1-instalando-no-linux-ubuntu-18-e-derivados.html
+- No pgadmin4 -  criar o server (atenção: o username vai estar postgres, alterar quando tiver criado o banco de dados)
+- Criar o banco de dados no pgadmin4 com o nome estabelicido no arquivo settings.py
+- Username: 'root' é o dono do banco de dados
+- deve-se criar o usuário root em login/group roles e habilitar todas as permissões para ele
+- depois muda-se o Owner do banco de dados para root
+- OBS: ao tentar acessar com USER = 'root', o acesso não foi possível. Foi necessário mudar
+- USER = 'postgres'
+
+OBS: A PARTIR DE AGORA SEMPRE USAR CLASS BASED VIEWS
+     - ATÉ AGORA AS VIEWS ERAM FUNCTION BASED VIEWS
+     - (request) é uma requisição, return render é a resposta
+
+OBS: Foi feita a herança de template (o django permite isso) nesse projeto, que é herdar de um arquivo html
+base e rodar em outro os blocos necessários
+
+10 - Criação das models
+- Lembrando que models são para fazer a conexão com o banco de dados
+- Quando o model é modificado, deve-se fazer as migrations. python manage.py makemigrations
+- Depois deve-se usar o python manage.py migrate, para as tabelas serem criadas no banco de dados
+- Criar o superusuário: python manage.py createsuperuser
+- OBS: Registrar os models no admin
+# Se trabalhando com o admin, lembrar de fazer os processos para que seja necessário cadastrar itens
+
+11 - Criação das views, para apresentar as informações nas páginas html
+-As páginas html foram modificadas, como a features e a equipe, com for, slicing, deixando-as mais dinâmicas
+
+12 - Criação do forms: Para preencher formulários
+
+13 - Fazer a configuração para enviar email no arquivo settings
+
+14 - Realização de teste
+# Todo teste comoça com test_
+# É uma forma de indicar para o gerenciador de testes indentificar os métodos de teste
+# Toda vez que se inicializa os testes, o django cria o banco de dados para o teste
+# ele não usa o banco de dados da aplicação, ao final dos teste ele destrói o banco de dados
+# Como se testa, views, models e forms. O ideal é criar um diretório de testes.
+# Dentro do diretório de teste cria-se o arquivo __init__. Para indicar que esse é um pacote python
+# Após, deleta-se o arquivo tests em core
+# Bibliotecas para ajudar nos testes automatizados
+# pip install model_mommy: gera objetos aleatórios
+# pip install coverage: mostra o que já foi testado e o que falta testar
+# Na raiz do projeto (fusion) criar o arquivo .coveragerc como txt
+# Configuração do .coveragerc
+[run]
+source = .  -> '.' significa para testar somente o projeto e não todo ambiente do virtual env
+
+omit =      -> arquivos que não precisam ser testados
+    */__init__.py
+    */settings.py
+    */manage.py
+    */wsgi.py
+    */apps.py
+    */urls.py
+    */admin.py
+    */migrations/* -> dentro desse diretório, todos não precisam ser testados
+    */tests/*      -> dentro desse diretório, todos não precisam ser testados
+
+# Para rodar o coverage: coverage run manage.py test
+# coverage report, para ter a porcentagem de testes e itens que faltam ser testados
+
