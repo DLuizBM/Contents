@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Exercícios_Estruturas_de_repetição/.idea/Exercícios_Estruturas_de_repetição.iml" filepath="$PROJECT_DIR$/../Exercícios_Estruturas_de_repetição/.idea/Exercícios_Estruturas_de_repetição.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Exercícios_Funções.iml" filepath="$PROJECT_DIR$/.idea/Exercícios_Funções.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Exercícios_coleções/.idea/Exercícios_coleções.iml" filepath="$PROJECT_DIR$/../Exercícios_coleções/.idea/Exercícios_coleções.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../guppe/.idea/guppe.iml" filepath="$PROJECT_DIR$/../guppe/.idea/guppe.iml" />
+    </modules>
+  </component>
+</project>
