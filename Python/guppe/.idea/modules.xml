@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Exercícios_Arquivos/.idea/Exercícios_Arquivos.iml" filepath="$PROJECT_DIR$/../Exercícios_Arquivos/.idea/Exercícios_Arquivos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Exercícios_Estruturas_de_repetição/.idea/Exercícios_Estruturas_de_repetição.iml" filepath="$PROJECT_DIR$/../Exercícios_Estruturas_de_repetição/.idea/Exercícios_Estruturas_de_repetição.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Exercícios_Estruturas_lógicas/.idea/Exercícios_Estruturas_lógicas.iml" filepath="$PROJECT_DIR$/../Exercícios_Estruturas_lógicas/.idea/Exercícios_Estruturas_lógicas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Exercícios_HerPolimor/.idea/Exercícios_HerPolimor.iml" filepath="$PROJECT_DIR$/../Exercícios_HerPolimor/.idea/Exercícios_HerPolimor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Exercícios_coleções/.idea/Exercícios_coleções.iml" filepath="$PROJECT_DIR$/../Exercícios_coleções/.idea/Exercícios_coleções.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ValorPorExtenso/.idea/ValorPorExtenso.iml" filepath="$PROJECT_DIR$/../ValorPorExtenso/.idea/ValorPorExtenso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../exercícios/.idea/exercícios.iml" filepath="$PROJECT_DIR$/../exercícios/.idea/exercícios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/guppe.iml" filepath="$PROJECT_DIR$/.idea/guppe.iml" />
+    </modules>
+  </component>
+</project>
