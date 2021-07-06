@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .progresso{
+        height: 20px;
+        width: 500px;
+        border: solid 1px gray;
+        margin: 10px;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color:green;
+        text-align: right;
+        height: 100%;
+        width: 0%;
+    }
+
+</style>
+<body>
+    <video id="meuvideo" width="800" height="450" controls autoplay controlsList="nodownload"> 
+        <!--controls: mostra os controles do vídeo
+            autoplay: faz com que ao entrar na tela, o vídeo inicialize automaticamente-->
+        <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+
+    </video>
+
+    <div wm-progresso="meuvideo" class="progresso">
+        <!--wm-progresso="meuvideo": meuvideo, para saber que essa div está associada ao vídeo de id="meuvideo"-->
+        <div>Olá</div>
+    </div>
+
+    <div>
+        <button wm-play="meuvideo">Play</button>
+        <button wm-pause="meuvideo">Pause</button>
+        <!--wm-play e pau ="meuvideo": meuvideo, para saber que esses buttons estão associada ao vídeo de id="meuvideo"-->
+
+    </div>
+
+</body>
+<script>
+    /*
+        function moveBarra(inicio){
+            const passo = 500/x.duration
+            let init = inicio
+            if(inicio <= 500){
+                init += passo
+                y.style.width = (init+'px')
+                setTimeout(() => moveBarra(init), 1000);
+                y.innerHTML = (((init)/500) * 100).toFixed(1)
+            }
+        }
+
+        function play(){
+            // pegando o elemento na tag video e alterando sua largura
+            x.width = '1000'    
+            x.play()
+            console.log(x.duration)
+            moveBarra(0)
+        }
+        function pause(){
+            x.pause()
+            moveBarra('pause')
+        }
+
+        const x = document.querySelector('video')
+        const y = document.querySelector('.progresso > div')
+        //y.style.width = '20%'
+    */
+    function confVideo(id){
+        const video = document.getElementById(id)
+
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play()
+        document.querySelector("[wm-pause=meuvideo]").onclick = e => video.pause()
+
+        setInterval(() => {
+            const porcentagem = (video.currentTime / video.duration) * 100
+            const barra = document.querySelector('.progresso > div')
+            barra.style.width = `${porcentagem}%`
+            barra.innerHTML = `${porcentagem.toFixed(1)}%`
+        }, 500);
+        // setInterval monitora e muda as configurações a cada 500ms
+    }
+    confVideo('meuvideo')
+
+</script>
+</html>

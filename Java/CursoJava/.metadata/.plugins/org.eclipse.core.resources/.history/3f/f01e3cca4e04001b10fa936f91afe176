@@ -1,0 +1,16 @@
+package Lambdas.InterfacesFuncionais169;
+
+import java.util.function.BinaryOperator;
+
+public class interfaces170 {
+
+	public static void main(String[] args) {
+		// utilizando interfaces do próprio java
+		
+		BinaryOperator<Double> calc = (x, y) ->{
+			return x + y;
+		};
+		
+		System.out.println(calc.apply(5.0, 5.0));
+	}
+}

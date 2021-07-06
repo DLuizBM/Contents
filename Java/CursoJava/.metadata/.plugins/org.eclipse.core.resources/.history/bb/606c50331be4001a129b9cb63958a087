@@ -1,0 +1,29 @@
+package classeMetodo;
+
+public class Conceitos83 {
+	/*
+	 * Quando se tem uma classe public, o nome da classe reflete o nome do arquivo
+	 * 
+	 * Uma classe possui atributos e comportamentos que são os membros
+	 * Atributos são dados (ex: int, double, bool)
+	 * Comportamentos são métodos (ex: main)
+	 * 
+	 * Uma classe define um tipo e um tipo é uma estrutura de dados
+	 * Uma classe representa uma abstração/simplificação
+	 * 
+	 * Objetos são dados criados a partir de uma determinada classe, a classe representa
+	 * uma estrutura de dados
+	 * 
+	 * Objeto = instância
+	 * Construtor: é um método especial que a partir de uma classe cria os objetos
+	 * 
+	 * Membros de uma classe:
+	 * variáveis e constantes (podem ser de classe ou objeto)
+	 * construtores
+	 * métodos (podem ser de classe ou objeto)
+	 * classes
+	 * Notação ponto é usada para acessar membros de uma classe
+	 * 
+	 * */
+	
+}

@@ -1,0 +1,6 @@
+134 - 
+Composição: quando um objeto é separado em objetos menores.
+se é desejado construir um objeto e este é muito complexo, ao invés
+de se colocar numa única classe tudo que pertece a este objeto
+o objeto é quebrado em classes menores, ou seja, um objeto vai ser composto
+por outros objetos

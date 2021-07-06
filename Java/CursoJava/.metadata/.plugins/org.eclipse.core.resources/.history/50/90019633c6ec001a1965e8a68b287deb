@@ -1,0 +1,11 @@
+package ArraysCollections;
+
+import java.util.ArrayList;
+
+public class List126 {
+
+	public static void main(String[] args) {
+		ArrayList<Usuario126> lista = new ArrayList<Usuario126>();
+		
+	}
+}

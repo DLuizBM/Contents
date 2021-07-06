@@ -1,0 +1,11 @@
+package Lambdas;
+
+public class main167 {
+	
+	public static void main(String[] args) {
+		Calculo167 calculo = new Soma167();
+		
+		System.out.println(calculo.executar(2, 3));
+		
+	}
+}

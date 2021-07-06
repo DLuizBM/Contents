@@ -1,0 +1,12 @@
+package classeMetodo;
+
+public class MembroClass99 {
+	
+	double area;
+	double pi = 3.14;
+	
+	double areaCirc(double raio){
+		area = pi * raio * raio;
+		return area;
+	}
+}

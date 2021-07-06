@@ -1,0 +1,13 @@
+package Lambdas.InterfacesFuncionais169;
+
+public class main {
+	 public static void main(String[] args) {
+		 
+		 Calculo calc;
+		 calc = (x, y) -> {
+			 return x + y ;
+		 };
+		 System.out.println(calc.executar(1, 2));
+		 
+	}
+}

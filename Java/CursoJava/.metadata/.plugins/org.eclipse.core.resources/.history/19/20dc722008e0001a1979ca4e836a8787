@@ -1,0 +1,17 @@
+package fundamentos;
+
+public class inferencia20 {
+	public static void main(String[] args) {
+		double a = 4.5;
+		System.out.println(a);
+		
+		a = 12;
+		System.out.println(a);
+		
+		// colocando var, o java vai inferir o tipo da variável
+		// nesse caso, double
+		var b = 4.5;
+		System.out.println(b);
+	}
+
+}

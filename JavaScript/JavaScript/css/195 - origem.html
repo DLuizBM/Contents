@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Origem CSS: Externo, Interno e Inline</title>
+    <style>
+        body { /* aplicando estilo na TAG body */
+            background-color: aquamarine;
+        }
+    </style>
+    <link rel="stylesheet" href="css/externo.css">
+    <!--rel significa relação que esse link tem com essa página html-->
+    <!--a prioridade é por ordem de processamento, o último a ser processado vai ter prioridade-->
+</head>
+
+<body style="background-color: brown;">
+    <!--css in line tem preferência sobre as demais, mas essa prática não é recomendável-->
+    <h1>E agora?</h1>
+</body>
+
+</html>

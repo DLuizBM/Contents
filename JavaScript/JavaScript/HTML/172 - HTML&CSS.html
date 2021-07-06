@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhando com CSS</title>
+    <style>
+        h1 {
+            background-color: red;
+        }
+        .fundoverde { /*todas as classes que tem o nome de fundoverde vão receber essa configuração*/
+            background-color: green;
+            font-size: 40px;
+        }
+        .negrito { /*classe fundoverde com especificação negrito*/
+            font-weight: bold;
+        }
+        #Negrito { /*o id tem prioridade em relação à classe*/
+            font-size: 60px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>CSS</h1>
+    <span id="textoPrincipal">Texto 1</span><br>
+    <span class="fundoverde negrito" id="Negrito">Texto 2</span><br>
+    <span class="fundoverde">Texto 3</span><br>
+</body>
+</html>

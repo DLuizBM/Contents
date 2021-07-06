@@ -1,0 +1,7 @@
+Foi instalado o http-server: Que é um servidor pro node
+comando: sudo npm i -g http-server
+O http-server tem um cache, para desabilitar o cache basta colocar 'http-server -c-1 .'
+
+Aula 183
+npm init -y -> para criar o arquivo package.json
+criar as dependências: npm i --save express@4.16.3 body-parser@1.18.2 -E

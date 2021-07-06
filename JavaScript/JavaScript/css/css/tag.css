@@ -1,0 +1,21 @@
+body {
+    font-size: 40px;
+    margin: 0; /*aproxima os elementos da margem*/
+}
+
+ol, ul { /*aplicando em ol e ul padding, que é recuar um elemento*/
+    padding: 0; /*tira o componente padrão que vem no browser*/
+}
+
+li {
+    margin-left: 60px;
+}
+
+.tag {
+    border: solid 4px;
+    margin: 5px; /*aplicando margem em todos elementos da classe tag*/
+}
+.TAG tag_name { /* tag_name -> é o novo nó criado no arquivo JS em document.creatElement("tag_name")*/
+    color: gold;
+    font-size: 25px;
+}

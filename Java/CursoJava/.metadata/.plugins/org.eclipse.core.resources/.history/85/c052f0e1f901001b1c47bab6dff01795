@@ -1,0 +1,11 @@
+package Exercicios_Estrutura_Controle;
+
+public class ex06 {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		int num
+		
+	}
+}

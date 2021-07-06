@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Dando espaço na section com css-->
+    <style> 
+        #conteudo{
+            padding: 30px 0px;
+        }
+        body {
+            background-color:skyblue;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Exercícos HTML</h1>
+    </header>
+    <nav>
+        <a href wb="form.html">Formulário</a> |
+    </nav>
+    <section id="connteudo"></section>
+    <footer>
+
+        <h2>Curso de Web</h2>
+
+    </footer>
+    <script>
+       
+        document.querySelectorAll('[wb]').forEach(link =>{
+            link.onclick = function(e){
+                e.preventDefault()
+                console.log('ação!!!')
+                const conteudo = document.getElementById('connteudo') // coloca o as informações do link na section com id conteúdo
+                fetch(link.getAttribute('wb'))
+                    .then(resp => resp.text()) // necessário para pegar o conteúdo html da página que está sendo feita a requisição
+                    .then(html => conteudo.innerHTML = html)
+
+            }
+        })
+    </script>
+</body>
+</html>

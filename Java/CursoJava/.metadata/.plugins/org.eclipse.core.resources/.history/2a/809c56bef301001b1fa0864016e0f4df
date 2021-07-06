@@ -1,0 +1,11 @@
+package fundamentos;
+
+public class Ternario {
+	public static void main(String[] args) {
+		double media = 7.0;
+		
+		String nota = media >= 7 ? "Aprovado" : "Reprovado";
+		
+		System.out.println(nota);
+	}
+}

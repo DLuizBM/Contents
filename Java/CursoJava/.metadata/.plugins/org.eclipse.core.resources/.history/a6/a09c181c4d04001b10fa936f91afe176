@@ -1,0 +1,14 @@
+package Lambdas.InterfacesFuncionais169;
+
+@FunctionalInterface
+public interface Calculo {
+	
+	// método abstrato
+	double executar(double a, double b);
+	
+	default String legal() {
+		return "legal";
+	}
+	
+	
+}

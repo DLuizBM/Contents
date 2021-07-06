@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        
+        /* '*' é o seletor universal -> com isso a configuração vai ser aplicado em todos 
+        * {
+            color: #ff0;
+            background-color: #f77;
+        }
+
+         . -> seletor de classe 
+        .tag {
+            color: rgb(166, 1, 155);
+            background-color: rgb(14,12, 10);
+        }
+
+         # -> seletor de id 
+        #aprovados {
+            background-color: green;
+        }
+
+         X > Y : dentro de X, pegue o elemento Y que esteja diretamente dentro 
+        #aninhado > div {
+            color: #fff;
+        }
+
+        #aninhado section {  pega tudo que está dentro da section 
+            color: yellow;
+        }
+        
+        Existe na página uma ul que antes dela tem uma tag p
+        p + ul {
+            color: tomato;
+        }
+        
+        Existe uma ol filho do mesmo pai que tem uma tag p anterior
+        p ~ ol{
+            color: tomato;
+        }
+        
+        Seletor de propriedade/atributo
+        [feira] { selecionando pelo atributo feira
+            color: yellow;
+            background-color: tomato;
+        }
+        [feira=casa] { selecionando pelo atributo feira
+            color: yellow;
+            background-color: tomato;
+        }
+        [feira~=escritorio] { selecionando pelo atributo feira
+            color: yellow;
+            background-color: tomato;
+        }
+        [feira*=sa] { selecionando todos com atributo feira que tenha sa no final
+            color: yellow;
+            background-color: tomato;
+        }
+        
+        selecionando uma tag que é o primeiro filho de alguém
+        span:nth-child(1){
+            color: violet;
+        }
+        
+        Dentro de uma section, pegue todos os filhos ímpares
+        section > :nth-child(odd){ even, são pares
+            color: violet;
+        }
+        
+        Dentro de uma section, pegue todos os filhos ímpares e também aplique para ul
+        section > :nth-child(odd), ul{ 
+            color: violet;
+        }
+        */
+        dentro de section pegue o segundo elemento do tipo span
+        section > span:nth-of-type(2){
+            color: violet;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class='tag'>
+        <span>Primeiro filho</span>
+        <div class='tag'>
+            <p class='tag'>1</p>
+            <ul class='tag' feira='casa'>
+                <li>Arroz</li>
+                <li>Feijão</li>
+            </ul>
+            <ul class='tag' feira='escritorio empresa'>
+                <li>Café</li>
+                <li>Água</li>
+            </ul>
+            <ol id='aprovados' class='tag'>
+                <li>Maria</li>
+                <li>Pedro</li>
+                <li>Ana</li>
+            </ol>
+            <div id='aninhado' class='tag'>
+                <div class="tag"> <!--#aninhado > div: pega a partir dessa div-->
+                    <section class='tag'>
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

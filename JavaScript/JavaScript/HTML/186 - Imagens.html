@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p {
+            position: absolute;
+            display: none;
+        }
+        .circular {
+            width: 513px;
+            background-color: aquamarine;
+        }
+
+        .texto {
+            width: 400px;
+        }
+
+        .texto img { /*dentro da classe texto vai procurar a tag img*/
+            margin-right: 10px;
+        }
+
+        .cidade {
+            width: 532px;
+            height: 342px;
+            background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 200%;
+        }
+        @keyframes mymove {
+            from {top: 0px;}
+            to {top: 200px;}
+        }
+    </style>
+
+</head>
+<body>
+    <div wm >
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        title="Muro da cidade"
+        width="532" height="342"
+        alt="Muro da cidade">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" 
+        title="Introdução"
+        width="532" height="342"
+        alt="Intro">
+    </p>
+    
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+        title="png"
+        width="532" height="342"
+        alt="Rio de Janeiro">
+    </p>
+
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" 
+        alt="avatar" height="50" >
+        Texto é um conjunto de palavras e frases encadeadas que 
+        permitem interpretação e transmitem uma mensagem. 
+        É qualquer obra escrita em versão original e que constitui um livro ou um documento escrito. 
+        Um texto é uma unidade linguística de extensão superior à frase.
+       
+      
+    </p>
+
+    <p class="cidade">
+
+    </p>
+
+    <p>
+        <picture>
+            <!--A tag picture permite selecionar várias imagens e colocar condições para que sejam exibidas
+            -->
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media="(min-width:600px)">
+            <!--media, colocar a condição de exibição-->
+            <!--É possível colocar vários sources com imagens, se nenhuma condição for satisfeita entra na tag img-->
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="">
+        </picture>
+    </p>
+    </div>
+</body>
+<script>
+    
+      function mover(elem, inicio, fim, passo, callback){
+          const novoInicio = inicio - passo
+          if(novoInicio >= fim){
+              elem.style.left = novoInicio + 'px'
+              setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 25);
+              // recursividade
+          }else{
+              callback()
+          }
+      }
+      /*
+      const p = document.querySelector('[wm] > p')
+      p.style.display = 'block'
+      mover(p, 1500, -532, 5, () => {
+          console.log('Terminou!!')
+      })
+      */
+      function slider(){
+          const elementos = document.querySelectorAll('[wm] > p')
+          const slides = Array.from(elementos)
+          exibirSlides(slides, slides[0])
+      }
+
+      function exibirSlides(slides, slide){
+          slide.style.display = 'block'
+
+          const inicio = innerWidth // obtém o tamanho da largura da tela
+          const fim = -slide.clientWidth // obtém a largura do objeto da tag 
+
+          slide.style.left  = `${inicio}px`
+
+          mover(slide, inicio, fim, 5, () => {
+              slide.style.display = 'none'
+              exibirSlides(slides, getProximo(slides, slide))
+          })
+      }
+
+      function getProximo(lista, atual){
+          const i = lista.indexOf(atual) + 1
+          return i < lista.length ? lista[i] : lista[0]
+      }
+
+      slider()
+
+</script>
+</html>

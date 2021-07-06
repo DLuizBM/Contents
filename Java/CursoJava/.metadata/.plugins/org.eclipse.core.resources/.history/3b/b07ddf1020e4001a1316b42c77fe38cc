@@ -1,0 +1,24 @@
+package classeMetodo;
+
+public class ClasseProduto87 {
+	
+	String nome;
+	double preco;
+	double desconto;
+	
+	double precoDesconto(double preco, double desconto) {
+		double precoDesconto = 0;
+		precoDesconto = preco - (preco * desconto);
+		return precoDesconto;
+	}
+	
+	double descontoDobrado() {
+		return preco * (1 - 2 * desconto);
+	}
+	// como os atributos estão dentro da classe é possível fazer dessa forma
+	// já que ao instanciar o produto na classe main, os atributos de preco
+	// e desconto serão definidos
+	double descontoDobrado(double descontoGerente) {
+		return preco * (1 - 2 * desconto);
+	}
+}

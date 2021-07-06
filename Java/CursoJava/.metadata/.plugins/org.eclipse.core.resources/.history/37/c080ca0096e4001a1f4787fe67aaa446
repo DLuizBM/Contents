@@ -1,0 +1,18 @@
+package classeMetodo;
+
+public class MembroClass99 {
+	
+	double area;
+	static double pi = 3.14;
+	// final é usado para definir uma constante, sendo impossível alterar o valor 
+	
+	// fixando pi como uma variável de classe
+	// sendo assim se pi for mudado em outra classe
+	// o valor vai se refletir de forma global
+	// alterando o valor de pi em todas as classes e métodos que usam pi
+	
+	double areaCirc(double raio){
+		area = pi * raio * raio;
+		return area;
+	}
+}

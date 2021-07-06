@@ -1,0 +1,9 @@
+package classeMetodo;
+
+public class Construtor94 {
+	/**
+	 * Quando se chama o construtor e não se passa nenhum parâmetro
+	 * esse é chamado de construtor padrão
+	 * Classe e construtor tem o mesmo nome
+	 * */
+}

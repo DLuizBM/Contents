@@ -1,0 +1,14 @@
+package classeMetodo;
+
+public class ClasseProduto87 {
+	
+	String nome;
+	double preco;
+	double desconto;
+	
+	double precoDesconto(double preco, double desconto) {
+		double precoDesconto = 0;
+		precoDesconto = preco - (preco * desconto);
+		return precoDesconto;
+	}
+}

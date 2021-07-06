@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <a href='https://www.cod3r.com.br'>Cod3r</a>
+    </div>
+    <div id='primeiro'>
+        <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
+    </div>
+    <script>
+        const img = document.querySelector('img')
+        // pegando o elemento img
+        // o elemento img possui dois atributos, src e alt
+
+        // pegando o atributo src
+        console.log('getAttibute', img.getAttribute('src'))
+        console.log('src', img.src)
+        console.log('[src]', img['src'])
+
+        console.log('Alt', img.alt)
+        // saída no Browser, Alt logo
+
+        console.log('NodeType', img.nodeType)
+        // Node type = 1: Elemento
+
+        const src = img.getAttributeNode('src')
+        console.log('NodeType', src.nodeType)
+        console.log('NodeName', src.nodeName)
+        console.log('NodeValue', src.nodeValue)
+
+        const link = document.querySelector('a')
+        console.log('Atributo href do link', link.getAttribute('href'))
+        console.log('Link', link.nodeType)
+        console.log('Frist child', link.firstChild.nodeType)
+        // firstChild -> primeiro elemento filho, elemento textual 'Cod3er' 
+
+        link.firstChild.nodeValue = 'Alterando o texto do primeiro elemento filho.'
+
+        console.log(link.firstChild)
+
+    </script>
+</body>
+
+</html>

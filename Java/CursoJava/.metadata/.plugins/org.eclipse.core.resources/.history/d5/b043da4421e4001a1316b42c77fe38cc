@@ -1,0 +1,8 @@
+package classeMetodo;
+
+public class Data92 {
+	
+	String dataFormatada(String dia, String mes, String ano) {
+		return dia+"/"+mes+"/";
+	}
+}

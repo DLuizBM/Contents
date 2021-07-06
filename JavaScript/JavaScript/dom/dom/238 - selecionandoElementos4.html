@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log(){
+            console.log(this)
+            // se fosse arrow function o this ía apontar para window
+        }
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul') // selecionando a lista
+        lista.parentNode.log() // pega o elemento pai de um determinado elemento, a div é o pai da lista ul. A div que envolve a lista
+        lista.childNodes.log()
+
+        // pegando o primeiro elemento da lista
+        const primeiro = lista.firstChild
+        primeiro.log() //primeiro elemento vai ser o espaço entre ul e Pedro
+        primeiro.nextSibling.log()
+
+        const ultimo = lista.lastChild
+        ultimo.log() // o último elemento vai ser o espaço entre Bia e ul
+        ultimo.previousSibling.log()
+
+        lista.children.log() // vem apenas os elementos, sem os textos
+        lista.firstElementChild.log() // traz de fato o primeiro elemento da lista Pedro
+        lista.lastElementChild.log()
+
+        lista.parentNode.previousElementSibling.log() // pega a div acima da :lista a div de início
+        lista.parentNode.nextElementSibling.log()
+
+        document.querySelectorAll('div ul li').log()
+        // seletor pega de fato aquilo que se quer
+    </script>
+</body>
+
+</html>

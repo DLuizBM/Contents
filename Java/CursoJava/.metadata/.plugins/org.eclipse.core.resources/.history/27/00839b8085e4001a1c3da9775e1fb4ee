@@ -1,0 +1,11 @@
+package classeMetodo;
+
+public class Construtor95 {
+	String nome;
+	double preco;
+	double desconto;
+	
+	Produto(){
+		
+	}
+}

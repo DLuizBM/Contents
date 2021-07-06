@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+        /*
+        Em linha gerais: A especificação é a maneira de como os navegadores definem quais 
+        valores de propriedades são os mais relevantes para o elemento a ser utilizado. 
+        A especificação é baseada apenas nas regras impostas na composição de diferentes tipos de seletores.
+       
+        1 - !important: Prática não recomendada
+        2 - seletores mais específicos
+        3 - última regra processada
+        */
+
+        .observacao {
+            background-color: #5f5;
+        }
+
+        p {
+            background-color: teal; /*!importante -> se fosse aplicado aqui, esse background color teria prioridade sobre o de p.observacao*/
+        }
+        /* nesse, mesmo vindo antes a configuração por classe do que a por tag p
+        ainda assim, a de classe tem prioridade, por conta da especificidade */
+
+        p.observacao{
+            background-color: tomato;
+            padding: 20px 20px;
+            border: dashed 5px black;
+            font-size: 30px;
+        }
+        /*p.observacao -> é mais específico do que os outros 2, por isso independente
+        da posição, ele sobreescreve os outro*/
+
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>

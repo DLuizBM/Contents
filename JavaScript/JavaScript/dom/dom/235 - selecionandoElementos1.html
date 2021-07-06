@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        document.getElementById('primeiro').classList.add('destaque')
+        //document.getElementById -> pega um elemento pelo id, sendo possível trabalhar ele.
+        //.classList.add('destaque') -> adiciona a classe destaque que está no arquivo estilo.css
+
+        const divs = document.getElementsByTagName('div')
+        // pega todos os elementos com a tag 'div' e gera uma lista desses elementos
+        // um HTMLcollections. É interessante transforma isso em um array. Podendo usar todas as funções de array.
+        Array.from(divs).forEach(lista => lista.classList.remove('destaque'))
+
+        // transformando em array com spread
+        const divsArray = [...divs]
+        divsArray.forEach(e => e.classList.add('destaque'))
+
+        // selecionando elementos pelo nome da classe
+        // document.getElementsByClassName -> retorna um (HTML collection), ficar atento a posição dos elementos
+
+        const elemento = document.getElementsByClassName('terceiro ultimo')
+        let transformado = Array.from(elemento)
+        for(let i of transformado){
+            i.classList.remove('destaque')
+        }
+    </script>
+</body>
+</html>

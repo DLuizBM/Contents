@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        const lista = document.querySelector('div ul[destino = "escritório"]')
+        // div tem um filho ul que possui um atributo personalizado destino
+        console.log(lista)
+        console.log(lista.childNodes)
+        console.log(lista.destino)
+        // não vai funcionar, pois 'destino' é uma propriedade personalizada que o browser não conhece
+        // para acessar esse tipo de propriedade usar getAttibute
+        console.log(lista.getAttribute('destino'))
+        console.log(lista.hasAttribute('destino'))
+
+        // setando atributos
+        lista.setAttribute('destino', 'empresa')
+        // muda o valor do atributo destino de escritório para empresa
+
+        lista.setAttribute('status', 'aberto')
+        // como o status originalmente não existe
+        // cria-se o atributo status com o valor aberto
+
+        // Removendo atributo
+        lista.removeAttribute('status')
+
+        // Atributos com data-atributo tem tratamento diferente
+        // ex: data-urgencia
+        console.log(lista.dataset) // mostra a lista de atributos data
+        console.log(lista.dataset.urgencia) // mostra o valor do atributo urgência
+
+        lista.dataset.urgencia = 12
+        console.log(lista.getAttribute('data-urgencia')) // mostra o valor do atributo urgência
+
+        const Label = document.querySelector('label')
+        console.log(Label)
+        console.log(Label.innerHTML)
+        console.log(Label.for)
+        // como for é uma palavra reservada da linguagem, não pode ser usada como identificador
+        // para acessar o valor do atributo for
+        console.log(Label.getAttribute('for'))
+        console.log(Label.htmlFor) // outra forma de acesso
+
+    </script>
+</body>
+
+</html>

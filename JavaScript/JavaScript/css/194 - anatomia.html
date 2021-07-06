@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        .selector { /* '.' significa classe  */
+            color: #222;
+            font-size: 30px;
+            text-align: center; /* centraliza um texto */
+            border: solid 15px navy;
+            font-family: Helvetica, monospace; /* vai tentar a primeira fonte, caso não encontre coloca a segunda */
+            width: calc(100% - 400px); /*diminui o tamanho que do border */
+            background-color: rgb(123, 150,180);
+        }
+
+        /*pseudo-class: muda a cor do componente quando o mouse passa por cima*/
+        .selector:hover {
+            background-color: silver;
+        }
+
+        /*pseudo-elemento: destaca um elemento escolhido*/
+        .selector::first-letter{
+            font-size: 60px;
+            font-weight: bold; /*deixa a fonte mais cheia*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="selector">Conteúdo</div>
+</body>
+
+</html>

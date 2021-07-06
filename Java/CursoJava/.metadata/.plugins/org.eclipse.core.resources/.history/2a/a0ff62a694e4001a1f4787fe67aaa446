@@ -1,0 +1,18 @@
+package classeMetodo;
+
+public class Main99 {
+	public static void main(String[] args) {
+		MembroClass99 area = new MembroClass99();
+		
+		MembroClass99.pi = 5;
+		System.out.println(area.areaCirc(3));
+		
+		// forma correta de acessar o valor de pi
+		// dessa forma pi vale 5, mas será alterado para todos usarem ele
+		MembroClass99.pi = 10;
+		System.out.println(area.areaCirc(3));
+		// notar a última alteração em pi é a que vale
+		// e será refletido em tudo que usar pi
+		
+	}
+}

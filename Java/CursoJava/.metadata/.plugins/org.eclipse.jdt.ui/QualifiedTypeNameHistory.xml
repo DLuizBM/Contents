@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="classeMetodo.Desafio100"/>
+    <fullyQualifiedTypeName name="classeMetodo.Desafio105"/>
+    <fullyQualifiedTypeName name="javax.management.RuntimeErrorException"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="com.mysql.jdbc.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="JDBC.Conexao"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.lang.Readable"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="java.util.Deque"/>
+    <fullyQualifiedTypeName name="java.util.ArrayDeque"/>
+    <fullyQualifiedTypeName name="com.sun.xml.internal.xsom.impl.scd.Iterators.Map"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.Map.Entry"/>
+    <fullyQualifiedTypeName name="OO.Motor135"/>
+    <fullyQualifiedTypeName name="OO.Carro135"/>
+    <fullyQualifiedTypeName name="OO.Compra136"/>
+    <fullyQualifiedTypeName name="OO.Item136"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="OO.Curso137"/>
+    <fullyQualifiedTypeName name="OO.Aluno137"/>
+    <fullyQualifiedTypeName name="OO.Interface161.main"/>
+    <fullyQualifiedTypeName name="sun.tools.java.ScannerInputReader"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="Lambdas.Calculo167"/>
+    <fullyQualifiedTypeName name="Lambdas.Soma167"/>
+    <fullyQualifiedTypeName name="Lambdas.Multiplicar167"/>
+    <fullyQualifiedTypeName name="classeMetodo.Construtor95"/>
+    <fullyQualifiedTypeName name="classeMetodo.MembroClass99"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
+    <fullyQualifiedTypeName name="java.util.function.BinaryOperator"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

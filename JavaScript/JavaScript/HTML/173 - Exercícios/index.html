@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Exercícos HTML</h1>
+    </header>
+    <nav>
+        <a href="teste.html">00-Teste</a>
+        <!--<a href wm-nav="teste.html"></a> propiedade personalizada para ter controle sobre uma tag html-->
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        <br>
+
+    </footer>
+    <script>
+        // Fazendo um comando para clicar no link, tag 'a' e pegar o conteúdo dela
+        // Fazer uma requisição ajax para pegar esse conteúdo e colocar na página principal
+        // pegando todas as tags 'a', document.querySelectorAll() devolve uma lista. Por isso o comando foreach
+        document.querySelectorAll('a').forEach(link =>{
+        //document.querySelectorAll('[wm-nav]').forEach
+            link.onclick = function(e){
+                // 'e' é o evento que se recebe do click. preventDefault() previne a ação padrão, nesse caso do click.
+                // sendo assim, ao clicar no link não vai mais para a página e vai mostar 'ação' no console do browser
+                e.preventDefault()
+                console.log('ação!!!')
+                
+                const conteudo = document.getElementById('conteudo')
+                // fazendo a requisição ajax e bontando no conteúdo
+                fetch(link.href)
+                // fetch(link.getAttribute('wm-nav'))
+                    .then(resp => resp.text()) // necessário para pegar o conteúdo html da página que está sendo feita a requisição
+                    // resp.text() retorna uma promise
+                    .then(html => conteudo.innerHTML = html)
+
+            }
+        })
+    </script>
+</body>
+</html>

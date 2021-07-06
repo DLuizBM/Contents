@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Dando espaço na section com css-->
+    <style> 
+        #conteudo{
+            padding: 30px 0px;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Exercícos HTML</h1>
+    </header>
+    <nav>
+        <a href wb="teste.html">00-Teste</a> |
+        <a href wb="texto01.html">Cabeçalho</a> |
+        <a href wb="texto2.html">Parte 2</a> |
+        <a href wb="listas.html">Listas</a> |
+        <a href wb="listaAninhada.html">Lista Aninhada</a> |
+        <a href wb="links.html">Links</a> |
+        <a href wb="tabelas.html">Tabelas</a> |
+        <a href wb="183/form.html">Formulário</a> | <!--buscando a pasta 183 e depois o arquivo form-->
+
+    </nav>
+    <section id="connteudo"></section>
+    <footer>
+
+        <h2>Curso de Web</h2>
+
+    </footer>
+    <script>
+       
+        document.querySelectorAll('[wb]').forEach(link =>{
+            link.onclick = function(e){
+                e.preventDefault()
+                console.log('ação!!!')
+                const conteudo = document.getElementById('connteudo') // coloca o as informações do link na section com id conteúdo
+                fetch(link.getAttribute('wb'))
+                    .then(resp => resp.text()) // necessário para pegar o conteúdo html da página que está sendo feita a requisição
+                    .then(html => conteudo.innerHTML = html)
+
+            }
+        })
+    </script>
+</body>
+</html>

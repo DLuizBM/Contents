@@ -1,0 +1,24 @@
+Aula 139
+Baixar e instalar o postman para o projeto de API rest
+
+1 - Para criar o projeto, deve-se inicar o arquivo package.json:
+Na pasta ProjetoAPI, comando: npm init -y
+2 - Instalar o Express: 
+Na pasta ProjetoAPI, comando: npm i --save express@4.16.2 -E
+--save: salva a referência do express dentro do arquivo package.json
+-E: instala a versão exata, não mexe nem no fix, nem no minor, nem no major
+
+3 - Criar a pasta src: Pasta onde fica o código fonte
+
+OBS: Dentro de package.json:
+Alterar main para src/servidor.json,
+Adicionar o script "start": 'nodemon'
+npm i --save-dev nodemon@1.14.11 -E: Para instalar o nodemon apenas no desenvolvimento
+e com a versão exata 
+
+4 - Criando o 'banco de dados' com o arquivo bancoDeDados.js
+
+5 - Para o método POST funcionar corretamente deve-se usar uma dependência
+com o Node, que o body-parser
+comando: npm i --save body-parser
+É utilizado no lado do servidor para transforma tudo em objeto, para ser utlizado

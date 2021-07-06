@@ -1,0 +1,28 @@
+- Collections
+- são dinâmicas
+- é possível misturar tipos de dados nas Collections
+- não suporta tipos primitivos
+- Não é possível por exemplo criar uma collection do tipo int
+- seria necessário criar um array ou usar um wrapper, que é versão
+- objeto de todos os tipos primitivos(Ex: Integer, Boolean), cada
+- tipo primitivo tem seu wrapper
+
+- Set/conjunto -> as operações matemáticas de conjuntos são aplicadas aqui
+- não ordenado(Por padrão)
+- não indexado
+- não aceita repetição
+
+- List
+- indexado
+- aceita repetição
+
+- Map/dicionário
+- chave/valor
+- chave não aceita repetição
+- valor aceita repetição
+
+- Queue/fila
+- First in - First out(Fifo)
+
+- Stack/pilha
+- Last in/ first out (Lifo)

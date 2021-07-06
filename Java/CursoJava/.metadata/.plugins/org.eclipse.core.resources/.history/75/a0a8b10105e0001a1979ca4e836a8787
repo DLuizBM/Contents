@@ -1,0 +1,11 @@
+package fundamentos;
+
+public class AreaCircunferencia12 {
+	public static void main(String [] args) {
+		double raio = 3;
+		double pi = 3.14;
+		
+		System.out.println(pi*raio*raio);
+		
+	}
+}

@@ -1,0 +1,13 @@
+package classeMetodo;
+
+public class Main99 {
+	public static void main(String[] args) {
+		MembroClass99 area = new MembroClass99();
+		
+		System.out.println(area.areaCirc(3));
+		
+		MembroClass99.pi = 5;
+		// forma correta de acessar o valor de pi
+		
+	}
+}

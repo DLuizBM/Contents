@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<h1>Lista aninhada</h1>
+<header>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+    
+    
+</header>
+<body>
+    
+<ul class="tree">
+    <li>
+       <span TAG >Músicas</span> 
+        <ul>
+            Artista
+            <li >
+                Luiz Gonzaga
+                <ul>
+                    Faixas
+                    <li>Sala de reboco</li>
+                    <li>Respeita januário</li>
+                    <li>Morte do vaqueiro</li>
+                </ul>
+            </li>
+            <li>
+                Alceu Valença
+                <ul>
+                    Faixas
+                    <li>Morena tropicana</li>
+                    <li>Anunciação</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        Documentos
+    </li>
+    <li>
+        Downloads
+    </li>
+</ul>
+<script>
+    document.querySelectorAll('[TAG]').forEach(folder => {
+        folder.onclick = function(e){
+            console.log('apertou!')
+
+            const ul = folder.nextElementSibling // pega o proxímo elemento depois da TAG, pegando a ul
+            const d = ul.style.display // representa o display atual da ul
+            ul.style.display = (d === 'none' ? 'block': 'none')
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+package Lambdas.InterfacesFuncionais169;
+
+public class main {
+	 public static void main(String[] args) {
+		 
+		 Calculo calc;
+		 calc = (x, y) -> {
+			 return x + y ;
+		 };
+		 System.out.println(calc.executar(1, 2));
+		 System.out.println(calc.legal());
+		 System.out.println(Calculo.massa());
+		 // acesso ao método estático, pois é um método de classe
+		 
+	}
+}

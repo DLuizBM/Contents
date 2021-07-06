@@ -1,0 +1,12 @@
+package Lambdas;
+
+public class mainLambda {
+
+	public static void main(String[] args) {
+		
+		Calculo167 calculo = (x, y) -> {
+			return x + y;
+		};
+		
+	}
+}

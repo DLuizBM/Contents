@@ -1,0 +1,11 @@
+package classeMetodo;
+
+public class MembrosClasseVsInstancia98 {
+	/**
+	 * Ao definir uma classe e seus atributos
+	 * se um atributo estiver com a palavra static
+	 * significa que aquele atributo será um atributo de classe 
+	 * 
+	 * */
+	
+}
