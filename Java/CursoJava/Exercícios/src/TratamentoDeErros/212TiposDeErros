@@ -1,0 +1,9 @@
+Tipos de erro.
+Throwable: é o lançador de erros, a classe base para todos os tipos de erro.
+Há dois tipos de erro, erro em compilação e erro em tempo de execução.
+Há dois tipos de erro que podem ser lançados em tempo de execução.
+Error: algo mais severo na aplicação, exemplo, OutOfMemoryError. A aplicação para e não há como
+recuperá-la.
+Exception: Tipo de erro que pode ser tratado e dar continuidade a aplicação. Exemplo, consulta em banco de dados, se
+o dado ou o banco não existirem, pode ser enviado uma mensagem dizendo que um problema aconteceu e aplicação continuar
+rodando.

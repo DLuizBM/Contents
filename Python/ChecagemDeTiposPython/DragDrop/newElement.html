@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="client-sidebar">
+
+        <ul class="nav nav-tabs">
+           
+            <li class="client-list" ondrop="dropIt(event)" ondragover="allowDrop(event)" >
+                Mova!
+                <a id="51597505099" href data-toggle="tab" ng-click="vm.setAbaAtiva(51597505099)" draggable="true" ondragstart="dragStart(event)">
+                    Paulo Ubirajara
+                    CPF
+                </a>
+                <a id="81604213205" href data-toggle="tab" ng-click="vm.setAbaAtiva(81604213205)" draggable="true" ondragstart="dragStart(event)">
+                    Maria Bezerra
+                    CPF1
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script type="text/javascript">
+
+function allowDrop(ev) {
+    ev.preventDefault(); 
+}
+
+function dragStart(ev) {
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+}
+
+function dropIt(ev) {
+    ev.preventDefault();
+
+    /*elemento arrastado*/
+
+    let idElementoArrastado = ev.dataTransfer.getData("text/plain");
+    let elementoArrastado = document.getElementById(idElementoArrastado);
+
+    /*elemento alvo*/
+    let elementoAlvo = document.getElementById(ev.target.id);
+
+    /*troca de texto
+    let auxText = elementoArrastado.innerHTML;
+    elementoArrastado.innerHTML = elementoAlvo.innerHTML;
+    elementoAlvo.innerHTML = auxText;
+    auxText = '';*/
+
+    let textElementoArrastado = elementoArrastado.innerHTML;
+    let textElementoAlvo = elementoAlvo.innerHTML;
+    /* prototype elemento */
+    //elementoArrastado.remove();
+    elementoArrastado.setAttribute("id", ev.target.id);
+    elementoArrastado.setAttribute("href", "");
+    elementoArrastado.setAttribute("data-toggle","tab");
+    elementoArrastado.setAttribute("ng-click", "vm.setAbaAtiva(" + ev.target.id + ")");
+    elementoArrastado.setAttribute("draggable", "true");
+    elementoArrastado.setAttribute("ondragstart", "dragStart(event)");
+    elementoArrastado.innerHTML = textElementoAlvo;
+
+    //elementoAlvo.remove();
+    elementoAlvo.setAttribute("id", idElementoArrastado);
+    elementoAlvo.setAttribute("href", "");
+    elementoAlvo.setAttribute("data-toggle","tab");
+    elementoAlvo.setAttribute("ng-click", "vm.setAbaAtiva(" + idElementoArrastado + ")");
+    elementoAlvo.setAttribute("draggable", "true");
+    elementoAlvo.setAttribute("ondragstart", "dragStart(event)");
+    elementoAlvo.innerHTML = textElementoArrastado;
+
+}
+</script>
+</html>

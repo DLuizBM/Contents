@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .card {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    padding: 10px;
+    cursor:pointer;
+  }
+</style>
+<body>
+    <div class="client-sidebar">
+
+        <ul class="nav nav-tabs">
+           
+            <li class="client-list" ondrop="dropIt(event)" ondragover="allowDrop(event)" >
+                Mova!
+                <a ng-click="hello" href="https://www.facebook.com/" id="1" class="card" draggable="true" ondragstart="dragStart(event)">
+                    Andre Hosne
+                </a>
+                <a href="https://www.google.com/" id="2" class="card" draggable="true" ondragstart="dragStart(event)">
+                    Carrocinhas B
+                </a>
+                <a href="https://www.youtube.com/watch?v=sUUB-iEidBk" id="3" class="card" draggable="true" ondragstart="dragStart(event)">
+                     Maria Bezerra
+                </a>
+                <a href="https://trello.com/b/pzo3zHTD/desenvolvimento-siavl" id="4" class="card" draggable="true" ondragstart="dragStart(event)">
+                     Paulo Ubirajara
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script type="text/javascript">
+function allowDrop(ev) {
+    ev.preventDefault();  // default is not to allow drop
+    //console.log(ev.target.textContent)
+  }
+  function dragStart(ev) {
+    // The 'text/plain' is referring the Data Type (DOMString) 
+    // of the Object being dragged.
+    // ev.target.id is the id of the Object being dragged
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+  }
+  function dropIt(ev) {
+    ev.preventDefault();  // default is not to allow drop
+    let idElementoArrastado = ev.dataTransfer.getData("text/plain");
+    console.log("idElementoArrastado")
+    console.log(idElementoArrastado);
+    let ElementoArrastado=document.getElementById(idElementoArrastado);
+    console.log("ElementoArrastado")
+    console.log(ElementoArrastado);
+    let ElementoPaiDoElementoArrastado=ElementoArrastado.parentElement;
+    console.log("ElementoPaiDoElementoArrastado")
+    console.log(ElementoPaiDoElementoArrastado);
+    // ev.target.id here is the id of target Object of the drop
+    console.log(ev.target.id);
+    let elementoAlvo=document.getElementById(ev.target.id)
+    console.log("elementoAlvo");
+    console.log(elementoAlvo);
+    let paiDoElementoAlvo=elementoAlvo.parentElement;
+    console.log("paiDoElementoAlvo");
+    console.log(paiDoElementoAlvo);
+    // Compare List names to see if we are going between lists
+    // or within the same list
+    if (paiDoElementoAlvo.id!==ElementoPaiDoElementoArrastado.id){
+// If the source and destination have the same 
+        // className (card), then we risk dropping a Card in to a Card
+        // That may be a cool feature, but not for us!
+        if (elementoAlvo.className === ElementoArrastado.className ){
+          // Append to parent Object (list), not to a 
+          // Card in the list
+          // This is in case you drag and drop a Card on top 
+          // of a Card in a different list
+          paiDoElementoAlvo.appendChild(ElementoArrastado);
+         
+        }else{
+            // Append to the list
+            elementoAlvo.appendChild(ElementoArrastado);
+           
+        }
+       
+    }else{
+        // Same list. Swap the text of the two cards
+        // Just like swapping the values in two variables
+      
+        // Temporary holder of the destination Object
+        let holder=elementoAlvo;
+        let linkElementoAlvo = holder.href;
+        let aux = linkElementoAlvo;
+        let linkElementoArrastado = ElementoArrastado.href;
+        // The text of the destination Object. 
+        // We are really just moving the text, not the Card
+        let holderText=holder.innerHTML;
+        // Replace the destination Objects text with the sources text
+        elementoAlvo.innerHTML=ElementoArrastado.innerHTML;
+        elementoAlvo.href = linkElementoArrastado;
+        // Replace the sources text with the original destinations
+        ElementoArrastado.innerHTML=holderText;
+        ElementoArrastado.href = linkElementoAlvo;
+        holderText='';
+    }
+    
+  }
+</script>
+</html>

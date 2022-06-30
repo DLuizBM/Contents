@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .container {
+        background-color: blue;
+    }
+    .receptor {
+        background-color: green;
+    }
+</style>
+<body>
+
+    <div></div>
+
+        <div class="container" ondragover="overAction(event)" ondrop="dropAction(event)">
+            Arraste 
+            <div class="component" id="1" draggable="true" ondragstart="dragstart(event)">
+                hello world
+            </div>
+            <div class="component" id="2" draggable="true" ondragstart="dragstart(event)">
+                hello world 2
+            </div>
+        </div>
+
+        <div class="receptor" ondragover="overAction(event)" ondrop="dropAction(event)">
+            Solte aqui<br>
+        </div>
+</body>
+<script type="text/javascript">
+    function dragstart(event) {
+        event.dataTransfer.setData("text/plain", event.target.id);
+        event.dataTransfer.effectAllowed = 'move';
+        console.log("ID ", event.target.id)
+    }
+
+    function overAction(event){
+        event.preventDefault();
+    }
+
+    function dropAction(event){
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+        const dados = event.dataTransfer.getData("text/plain");
+        console.log(event.target);
+        const element = document.getElementById(dados);
+        try{
+            event.target.appendChild(element);
+        }catch(e){
+            console.error("Erro" + e);
+        }
+        event.stopPropagation();
+    }
+</script>
+</html>
