@@ -12,6 +12,9 @@ public class main {
         Function<Integer, Integer> soma = n -> n + 2;
         
         int result = maisDois.andThen(vezesDois).andThen(aoQuadrado).apply(0);
+        // apply é o método que inicia o processo.
+        // aplique zero na função maisDois, o resultado dessa, aplique em vezesDois
+        // o resultado dessa, aplique em aoQuadrado.
         System.out.println(result);
 
         // Compose: compose faz a operação ao contrário

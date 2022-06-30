@@ -9,6 +9,7 @@ public interface esportivo {
     // cada classe que herda da interface
     // pode implementar o método de uma forma 
     // todo método dentro de interface é public
+    // variáveis em interfaces são sempre static e final
 
     void ligarTurbo();
     void desligarTurbo();

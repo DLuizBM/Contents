@@ -5,6 +5,7 @@ public class main {
         
         civic c = new civic();
         c.velocidade = 100;
+        c.ligarModoEco();
         c.acelerar();
         // civic herdou o método acelerar de carro
         System.out.println(c.velocidade);
@@ -13,5 +14,9 @@ public class main {
         f.velocidade = 100;
         f.acelerar();
         System.out.println(f.velocidade);
+
+        carro carro = new ferrari();
+        carro = new civic();
+        // Poliformis dinâmico
     }
 }

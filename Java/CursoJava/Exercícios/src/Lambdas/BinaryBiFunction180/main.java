@@ -3,6 +3,7 @@ package Lambdas.BinaryBiFunction180;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class main {
     public static void main(String[] args) {
@@ -22,4 +23,21 @@ public class main {
 
         System.out.println(media.andThen(conceito).apply(6.7, 5.1));
     }
+}
+
+class Main
+{
+	public static void main(String[] args) {
+	    
+	    Function<Integer, Integer> calculo = x -> x + 10;
+	    BinaryOperator<Integer> calculo2 = (x, y) -> x * y;
+	    Function<Integer, Integer> calculo3 = x -> x + 25;
+	    Predicate<Integer> isCaro = x -> x > 25;
+
+	    Integer num = 10;
+	    
+	    System.out.println(isCaro.test(calculo2.andThen(calculo).andThen(calculo3).apply(5, 5)));
+
+		
+	}
 }

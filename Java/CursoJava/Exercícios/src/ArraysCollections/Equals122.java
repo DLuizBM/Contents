@@ -16,6 +16,10 @@ public class Equals122 {
         System.out.println(u1.equals(u2));
         // resultado, false, pois o equals dessa forma funciona como o ==
         // ele deve ser trabalhado
+
+        // Por padrão o comportamento do equals é o mesmo do operador ==
+        // Para que ele se comporte de forma diferente, deve-se reescrevê-lo
+        // definindo os parâmetros de comparação para definir a igualdade.
         
     }
 }

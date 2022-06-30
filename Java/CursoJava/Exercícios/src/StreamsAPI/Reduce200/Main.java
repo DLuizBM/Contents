@@ -1,5 +1,6 @@
 package StreamsAPI.Reduce200;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -36,5 +37,20 @@ public class Main {
                 }
                 return false;
             }).reduce(0, sum);
+    }
+}
+
+class Reduce {
+    
+    public static void main(String[] args){
+        ///List<Integer> nums = new ArrayList<>();
+        List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+        BinaryOperator<Integer> sum = (ac, n) -> ac + n;
+
+        Optional<Integer> result = nums.stream().reduce(sum);
+        // Quando não se passa um valor inicial para o reduce, ele inicia o cálculo 
+        // usando os dois primeiros elementos do stream.
+        System.out.println(result.get());
+
     }
 }

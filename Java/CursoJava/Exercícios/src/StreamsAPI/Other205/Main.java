@@ -1,7 +1,9 @@
 package StreamsAPI.Other205;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import StreamsAPI.Filter194.Aluno;
 
@@ -18,6 +20,9 @@ public class Main {
         Aluno a8 = new Aluno("Gabi", 10.0);
 
         List<Aluno> alunos = Arrays.asList(a1, a2, a3, a4, a5, a6, a7, a8);
+        List<Double> notas = alunos.stream().map(a -> a.nota).collect(Collectors.toList());
+        Collections.max(notas);
+        Collections.min(notas);
 
         //distinct: serve para eliminar valores repetidos
         //ATENÇÃO: para que o distinct funcione, é necessário implementar o equals hash code na classe aluno
@@ -56,7 +61,7 @@ public class Main {
 
         System.out.println("TAKE WHILE");
         alunos.stream().distinct()
-            .takeWhile(aluno -> aluno.nota > 7)
+            //.takeWhile(aluno -> aluno.nota > 7)
             .forEach(aluno -> System.out.println(aluno.getName()));
         // a única saída é Ana, elemento a1, pois Ana tem nota maior que 7, logo após Ana, a nota é 6.1
         // como não satisfaz a condição, ele para, mesmo que após  a nota 6.1 haja outras notas maiores que 7

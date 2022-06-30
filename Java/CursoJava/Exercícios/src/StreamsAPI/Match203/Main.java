@@ -27,7 +27,8 @@ public class Main {
         System.out.println(alunos.stream().noneMatch(aprovado));
         System.out.println(alunos.stream().noneMatch(reprovado));
         // se nenhum aluno for reprovado, retorna true
-
+        boolean test = alunos.stream().allMatch(aprovado);
+        System.out.println(test);
         /**
          * allMatch = true se todos
          * anyMatch = true se algum

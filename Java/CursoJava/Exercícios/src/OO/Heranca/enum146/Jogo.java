@@ -16,8 +16,12 @@ public class Jogo {
         System.out.println(j2.vida);
 
         Heroi heroi = new Heroi();
+        Direcao dir = Direcao.NORTE;
         heroi.x = 10;
         heroi.y = 11;
+        System.out.println("Posição 1: " + heroi.y);
+        heroi.andar(dir);
+        System.out.println("Posição 2: " + heroi.y);
         heroi.atacar(j1);
         // heroi é um jogador, logo tem os mesmo atributos e métodos
         // como o método atacar está definido para um tipo genérico

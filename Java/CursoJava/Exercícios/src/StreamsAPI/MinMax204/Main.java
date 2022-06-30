@@ -16,8 +16,8 @@ public class Main {
         List<Aluno> alunos = Arrays.asList(a1, a2, a3, a4);
 
         Comparator<Aluno> maiorNota = (aluno1, aluno2) -> {
-            System.out.println(aluno1.nota);
-            System.out.println(aluno2.nota);
+            System.out.println("aluno 1 " + aluno1.nota);
+            System.out.println("aluno 2 " + aluno2.nota);
             if(aluno1.nota > aluno2.nota) return 1;
             if(aluno1.nota < aluno2.nota) return -1;
             /*

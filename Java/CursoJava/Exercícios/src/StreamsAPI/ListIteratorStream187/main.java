@@ -31,9 +31,9 @@ public class main {
         Um stream tem 3 grupos de operações
         1 - Built ops: operações de construção, que são para chamar e 
         construir os streams;
-        2 - Internal ops: operações que recebem uma stream e devolve outra
+        2 - Internal (Intermediária) ops: operações que recebem uma stream e devolve outra
         stream, possui métodos que ajudam a manipular o stream;
-        3 - Terminal ops: operações que recebem uma strema e devolvem outro
+        3 - Terminal ops: operações que recebem uma stream e devolvem outro
         tipo de variável, ex: entra stream e sai um double
 
         Streams podem ser ordenadas ou não e sequenciais ou paralelas

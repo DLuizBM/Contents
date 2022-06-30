@@ -25,6 +25,7 @@ public class main {
         produtos.forEach(prod);
         produtos.forEach(System.out::println);
         System.out.println(p1 + "!!!!");
+        prod.accept(produtos.get(0));
         // para cada produto em produtos, aplique o prod
         // a sobreescrita do método toString, faz printar o nome e o preço de cada produto
         /*

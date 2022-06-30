@@ -9,7 +9,7 @@ public class main {
     public static void main(String[] args) {
         
         Consumer<String> print = System.out::println;
-
+        int[] nums = new int[] {1, 2, 3};
         //criando uma stream - modo1
         Stream<String> langs = Stream.of("Java", "Python", "C++");
         langs.forEach(print);
@@ -18,6 +18,7 @@ public class main {
 
         //criando uma stream - modo2
         Stream.of(otherLangs).forEach(print);
+        Stream.of(nums).forEach(System.out::println);
 
         //criando uma stream - modo3
         Arrays.stream(otherLangs).forEach(print);

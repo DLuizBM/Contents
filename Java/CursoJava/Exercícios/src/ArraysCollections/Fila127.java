@@ -15,7 +15,7 @@ public class Fila127 {
 		
 		// quando se tem uma fila com restrição de tamanho
 		// ao tentar adicionar com o add, se a fila estiver completamente
-		// preenchida, ele retorna um erro, lança execeção
+		// preenchida, ele retorna um erro, lança exceção
 		// offer retorna true or false, false se não conseguir adicionar
 		fila.add("Ana");
 		fila.offer("Bia");
@@ -33,7 +33,7 @@ public class Fila127 {
 		
 		// Pegando o primeiro elemento da fila
 		// comportamento quando a fila está vazia
-		// peek retorna nula caso não consigo pegar um elemento da fila
+		// peek retorna nulo caso não consigo pegar um elemento da fila
 		// element gera um exceção
 		// ambos obtém o elemento, mas não remove da fila
 		System.out.println(fila.peek());

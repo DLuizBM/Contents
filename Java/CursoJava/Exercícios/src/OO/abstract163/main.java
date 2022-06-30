@@ -8,7 +8,7 @@ public class main {
         // cachorro é a única classe concreta
         // sendo assim, a única a que pode ser instanciada
         // ao instaciar como Animal, não se tem acesso ao método mamar
-        // pois esse método é de cachorro e não de Animal
+        // pois esse método é da classe Cachorro e não da classe Animal
         // Quero criar um cachorro sendo um animal, logo, para saber 
         // os métodos disponíveis para cachorro, devo ver os métodos disponíveis
         // na classe Animal e não na Classe Cachorro

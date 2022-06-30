@@ -11,6 +11,8 @@ public class main {
         System.out.println(ferrari.ligarAr);
         ferrari.ligarAr();
         System.out.println(ferrari.ligarAr);
+        System.out.println(ferrari.velocidadeAr());
+        System.out.println(ferrari.velocidadeCruzeiro());
 
         int c = 129;
         byte d = (byte) c;

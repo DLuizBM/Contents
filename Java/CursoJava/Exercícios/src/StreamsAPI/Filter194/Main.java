@@ -3,6 +3,7 @@ package StreamsAPI.Filter194;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -18,7 +19,11 @@ public class Main {
         Function<Aluno, String> msg = aluno -> aluno.nome + " está aprovado";
         Consumer<String> print = string -> System.out.println(string);
         // filter pode retornar uma stream menor do que a original
-        // retora o objeto e não só o valor booleano da comparação
+        // retorna o objeto e não só o valor booleano da comparação
         alunos.stream().filter(aprovado).map(msg).forEach(print);
+
+        boolean aproved = aprovado.test(a1);
+        System.out.println(aproved);
+
     }
 }

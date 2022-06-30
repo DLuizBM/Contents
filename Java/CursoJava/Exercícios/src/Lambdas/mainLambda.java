@@ -20,6 +20,7 @@ public class mainLambda {
 
 		Calculo167 calc = new Soma167();
 		System.out.println(calc.executar(3, 2));
+		// O método executar aqui vai ter o comportamento da classe Soma167, pois a instância é outra.
 		
 	}
 }

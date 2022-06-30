@@ -5,7 +5,7 @@ public class main {
 		 
 		 Calculo calc;
 		 calc = (x, y) -> { // implementando o único método abstrato que existe na interface funcional,
-			 return x + y ; // dessa forma, essa função vai representar a implentação do método executar
+			 return x + y ; // dessa forma, essa função vai representar a implementação do método executar
 		 };
 		 System.out.println(calc.executar(1, 2));
 		 System.out.println(calc.legal());
