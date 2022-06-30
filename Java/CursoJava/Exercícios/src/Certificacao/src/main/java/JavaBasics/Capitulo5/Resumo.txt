@@ -1,0 +1,31 @@
+Capítulo 5 Usando operadores e construçõe de decisão
+
+5.1 Use operadores Java
+
+Para um valor ser atribuído a uma variável, ambos devem ser compatíveis.
+Um valor é compatível com uma variável se ele for do mesmo tipo dela ou de
+um tipo menos abrangente.
+Ex:
+int age = 30;
+E agora utilizamos um valor do tipo int , atribuindo ele a variável do tipo
+long . Como int é menos abrangente que long essa atribuição está correta.
+long age = 30;
+
+int g = 10l; // erro, long não cabe em int
+float h = 10l; // inteiros cabem em decimais
+double i = 20; // inteiros cabem em decimais
+long j = 20f; // decimais não cabem em inteiros
+
+A exceção a essa regra ocorre quando trabalhamos com tipos inteiros me-
+nos abrangentes que int ( byte , short e char ). Nesses casos, o compi-
+lador permite que atribuamos um valor inteiro, desde que compatível com o
+tipo.
+Ex: 
+byte = 10; byte possui armazena 1 byte (8 bits), 2 ^ 8 = 256, logo consigo representar 256 números,
+porém, números positivos e negativos, dessa forma -2 ^ 8 a 2 ^ 8 - 1 = -128 a 127.
+O inteiro 10 está dentro desse intervalo, dessa forma é possível representar um tipo mais abrangente, que é int
+em um byte. O cálculo poderia ser feito pros outros tipos também.
+
+Lembre que as atribuições em Java são por cópia de valor, sempre. No
+tipo primitivo, copiamos o valor, em referências a objetos, copiamos o valor
+da referência (não duplicamos o objeto):

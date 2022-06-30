@@ -1,0 +1,54 @@
+Seção 4.1. Declarar e inicializar variáveis
+
+1 - d;
+2 - a;
+3 - d; return nesse caso impede que o programa prossiga e não chegue na linha 10, caso entre no else. 
+4 - f;
+5 - b;
+6 - b;
+7 - a;
+8 - c;
+9 - a;
+10 - d;
+
+4.2 Diferença entre variáveis de referências a objetos e tipos primitivos	
+1 - e;
+2 - f;
+
+4.3 Leia ou escreva para campos de objetos
+1 - b;
+
+4.4 Explique o ciclo de vida de um objeto (criação, “de referência” e garbage collection)
+1 - c;
+2 - b;
+3 - b;
+
+4.5 Chame métodos em objetos
+1 - b;
+2 - c;
+3 - e;
+4 - 3;  O código compila e imprime 2. Esse é o caso
+	absurdo onde o array é tanto um Object quanto um array de Object .
+	Por padrão o Java tratará como um array de Object .
+	
+4.6. Manipule dados usando a classe StringBuilder e seus métodos
+1 - e;
+2 - a; indexOf e lastIndexOf de um caractere que não está presente retorna -1;
+
+4.7. Criando e manipulando Strings
+1 - c;
+2 - b;
+3 - a;
+4 - a;
+5 - e;
+6 - b;
+7 - b;
+8 - e;
+9 - c;
+10 - c;
+11 - c;
+12 - c;
+13 - a;
+14 - b;
+
+

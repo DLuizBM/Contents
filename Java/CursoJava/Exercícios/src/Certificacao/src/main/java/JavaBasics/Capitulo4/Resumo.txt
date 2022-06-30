@@ -1,0 +1,359 @@
+4.1 Declarar e inicializar variáveis
+
+- No Java, a inicialização é obrigatória e pode ser implícita ou
+explícita. É de fundamental importância saber que, para usar uma variável, é
+necessário que ela tenha sido iniciada explicitamente ou implicitamente em
+algum momento antes da sua utilização
+
+Forma de inicialização de variável
+Explícita: Inicialização direta.
+
+int a = 10;
+int a;
+a = 10;
+
+Implícita: Ocorre quando a variável é membro de uma classe e 
+é feita uma instância dessa classe. Nesse caso, a variável vai
+possuir o valor default.
+
+class a { 
+	double num;
+}
+
+class b {
+	a numero = new a();
+	System.out.println(numero.num);
+	//Saída: 0.0, pois 0.0 é o valor default
+	//do tipo double
+	
+}
+
+- A declaração implícita também ocorre para arrays.
+int[] numbers = new int[10];
+System.out.println(numbers[0]);
+//Saída: 0, pois 0 é o valor default para o tipo int
+
+Valores default
+- primitivos numéricos inteiros 0
+- primitivos numéricos com ponto flutuante 0.0
+- boolean false
+- char vazio, equivalente a 0
+- referências null 
+  Ex: Em uma classe é declarado String str;
+      Ao fazer a instância dessa classe, e ao usar o valor str, esse será null.
+      Importante salientar que, se for declarado dentro de um método construtor ou
+      em algo método específico, essa variável deve ser inicializada para não gerar
+      erro de compilação.
+
+- Todos os tipos primitivos são numéricos, exceto boolean. Até mesmo char é numérico,
+pois apesar de armazenar caractere, ele armazena seu valor como um número inteiro positivo.
+Ex: char c = 48; char c = 118;
+O valor 48 na tabela ascii representa o número 0 e o valor 118 a letra v minúscula.
+char c = 'a';
+É mostrado o caractere 'a', quando se coloca '', é mostrado o caractere, desde que não haja mais de um caractere
+(EX: char c = '12'), pois isso gera erro de compilação. Quando se coloca número, como no exemplo acima, então é mostrado
+o caractere correspondente àquele número.
+
+- char só armazena números positivos
+
+- Cálculo do intervalo de números que os tipos possuem -2^(n-1) a 2^(n-1) -1, exceto char que possui somente a parte positiva
+
+• byte 1 byte (8 bits, de -128 a 127);
+• short 2 bytes (16 bits, de –32.768 a 32.767);
+• char 2 bytes (só positivo), (16 bits, de 0 a 65.535);
+• int 4 bytes (32 bits, de –2.147.483.648 a 2.147.483.647);
+• long 8 bytes (64 bits, de –9.223.372.036.854.775.808 a 9.223.372.036.854.775.807);
+• float 4 bytes (32 bits, de +/–1.4 * 10 ^45 a +/–3.4028235 * 10 ^38);
+• double 8 bytes (64 bits, de +/–4.9 * 10 ^324 a +/–1.7976931348623157 * 10 ^308).
+
+Todos os números de ponto flutuante também podem assumir os seguin-
+tes valores:
+• +/– infinity
+• +/- 0
+• NaN (Not a Number)
+
+No caso de números inteiros, podemos declarar usadando bases diferentes
+
+- Representação de números em outras bases
+int a = 0761;      // Octal -> deve começar com 0 e somente usar números de 0 a 7
+System.out.println(a);
+	    
+int b = 0XABC;     // Hexa -> deve começar com 0x ou 0X e usar número de 0 a 15, sendo de 10 a 15 representados por A,B,C,D,E,F.
+System.out.println(b);
+	    
+int c = 0b011;     // Binário -> deve começar com 0b ou 0B e somente usar 0 e 1.
+System.out.println(c);
+
+Obs: Notação científica: 
+float f = 2E3F;
+faça, 2 vezes 10 (E ou e) elevado a 3 e transforme em float (F ou f).
+
+################################################################################################################################
+Usando literais
+
+Ao escrever nosso código, muitas vezes o programador coloca os valores
+das variáveis diretamente no código-fonte. Quando isso ocorre, dizemos que
+o valor foi literalmente escrito no código, ou seja, é um valor literal.
+
+// compila pois 737821237891232 é um double válido
+System.out.println(737821237891232d);
+// compila pois 737821237891232 é um long válido
+System.out.println(737821237891232l);
+// não compila pois 737821237891232 é um valor maior que
+// o int aceita
+System.out.println(737821237891232);
+
+A partir do Java 7, existe a possibilidade de usarmos underlines ( _ ) quando
+estamos declarando literais para facilitar a leitura do código:
+int a = 123_456_789;
+
+Os underlines só podem ser posicionados em valores numéricos em ambos os lados.
+
+int i = 0_100_267_760; ok
+	0_x_4_13;	erro
+	0b_x10_BA_75;   erro
+	0b_10000_10_11; erro
+	0xa10_AF_75;    ok(AF, apesar de letras, representam números)
+
+	345.45_e3;  erro(_ está do lado de e)
+	345.45e_3;  erro(_ está do lado de e)	
+	3_4_5.4_5e3; ok
+	345._45F;   erro(_ está do lado de .)
+	
+	
+#############################################################################################################################
+
+Identificadores
+
+Identificadores são palavras usadas pelo programador para identificar variáveis, métodos, construtores, classes e interfaces.
+
+OBS: null, true e false são literais
+
+Identificadores válidos devem seguir as regras:
+• Não podem ser igual a uma palavra-chave;
+• Podem usar letras (unicode), números, $ e _ ;
+• O primeiro caractere não pode ser um número;
+• Podem possuir qualquer número de caracteres.
+
+int false; // inválido, palavra reservada
+int x-y; // inválido, traço
+int 4num; // inválido, começa com número
+int av#f; // inválido, #
+int num.spc; // inválido, ponto no meio
+
+######################################################################################################################
+
+4.2 Diferença entre variáveis de referências a objetos e tipos primitivos	
+
+Uma variável de referência é um ponteiro para o endereço de memória
+onde o objeto se encontra. Duas referências são consideradas iguais somente se elas estão apontando
+para o mesmo objeto. Mesmo que os objetos que elas apontem sejam iguais,
+ainda são referências para objetos diferentes:
+
+######################################################################################################################
+4.3 Leia ou escreva para campos de objetos
+Revisar o exercício dessa seção;
+######################################################################################################################
+4.4 Explique o ciclo de vida de um objeto (criação, “de referência” e garbage collection)
+
+O ciclo de vida dos objetos java está dividido em três fases distintas.
+
+1 - Criação de objetos
+Toda vez que usamos o operador new , estamos criando uma nova instância de um objeto na memória.
+
+Objeto acessível
+
+A partir do momento em que um objeto foi criado e atribuído a uma va-
+riável, dizemos que o objeto está acessível, ou seja, podemos usá-lo em nosso
+programa
+
+Objeto inacessível
+
+Um objeto é inacessível quando não existe nenhum caminho direto ou indireto para acessar esse objeto.
+
+EX:
+Person p = new Person();
+p.name = "Mário";
+
+// atribuímos a p o valor null
+// o objeto não está mais acessível
+p = null; // A
+
+// criando um objeto sem variável
+new Person(); // B
+
+Ao atribuírmos null ao objeto p, ele não pode mais ser acessado, pois não há mais um ponteiro pra ele.
+O mesmo acontece em B, o objeto foi criado, porém ele não foi atribuído a nenhuma variável, dessa forma
+não há como acessá-lo após a linha em que ele está.
+
+Outra maneira de ter um objeto inacessível é quando o escopo da variável
+que aponta para ele termina:
+int value = 100;
+if( value > 50) {
+	Person p = new Person();
+	p.name = "Guilherme";
+}
+
+Após o if, o objeto Person não pode mais ser utilizado.
+
+Garbage collector
+Não é possível prever quando ele será executado, portanto não se pode dizer com certeza quantos objetos foram efetivamente co-
+letados em um certo ponto da aplicação. O que podemos determinar é quantos objetos são elegíveis para a coleta.
+A prova pode tentar se aproveitar do descuido do desenvolvedor aqui: nunca temos certeza de quantos objetos passaram pelo garbage collector, logo, somente indique quantos estão passíveis de serem coletados.
+
+#############################################################################################################################
+
+4.5 Chame métodos em objetos
+
+Varargs: A partir do Java 5, varargs possibilitam um método que receba um nú-
+mero variável (não fixo) de parâmetros. É a maneira de receber um array de
+objetos e possibilitar uma chamada mais fácil do método. Em todos os casos, um array será criado, nunca null será passado. Um
+parâmetro varargs deve ser sempre o último da assinatura do método para
+evitar ambiguidade. Isso implica que apenas um dos parâmetros de um mé-
+todo seja varargs . E repare que os argumentos variáveis têm que ser do
+mesmo tipo.
+
+É possível passar um array ou apenas um tipo, exemplo, somente um int para o varargs que ele consegue lidar, como no exemplo a seguir ou
+mesmo passar um conjunto de números, como na linha 224, porém o mesmo não pode ser feito em uma função que recebe um array.
+
+public static void main(String[] args) {
+        
+        int[] nums = {1, 2, 3};
+        print(1);
+        print(nums);
+        print(1, 2, 3, 4, 5);
+    }
+    
+    static void print(int... nums){
+        System.out.println(nums);
+        
+    }
+    
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+        
+        int[] nums = {1, 2, 3};
+        Object numses = new Object[]{2, 3};
+        System.out.println(numses); 
+        // nessa forma, o Object é somente um array, se quisermos acessar os valores desse array, deve-se fazer um cast para array de 		// Objects, como no print abaixo.
+        System.out.println(((Object[])numses)[1]);
+        // Convertendo o object array para array de Objects
+        System.out.println((new Object[]{2, 3})[0]);
+    }
+    
+    	Esse é o caso
+	absurdo onde o array é tanto um Object quanto um array de Object .
+	Por padrão o Java tratará como um array de Object .
+    
+	
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+    
+        Object numses = new Object[]{1, 2, 3};
+        print(numses);
+        // A saída na função print é 1, pois ao fazer o que está na linha 258, é passado para numses um array de objects,
+        porém numses é do tipo Object e não um Array de Objects, como Object recebe qualquer tipo, o java enxerga o Array
+        de objects passado como um tipo, dessa forma, a variável numses é um tipo Array Objects, é como se isso acontecesse:
+        
+        [Object, Object, Object] obj = numses;
+        obj é do tipo array object, algo extremamente abstrato e de difícil compreensão, em outra palavras, é como se houvesse
+        uma classe [Object, Object, Object]. 
+    
+    }
+    
+    static void print(Object... nums){
+        System.out.println(nums.length);
+        
+    }
+    		
+}
+
+################################################################################################################################
+4.6 Casa do Código Manipule dados usando a classe StringBuilder e seus métodos
+
+Para suportar Strings mutáveis, o Java possui as classes StringBuffer (é thread-safe) e StringBuilder.Quando não há compartilhamento entre
+threads, use sempre que possível a StringBuilder , que é mais rápida por não precisar se preocupar com locks.
+Para converter um StringBuffer / Builder em String , basta chamar o toString mesmo. Cuidado, pois o método substring não altera o valor do seu StringBuilder ou StringBuffer , mas retorna a String que você deseja.
+
+#################################################################################################################################
+4.7 Criando e manipulando Strings
+
+Existem duas maneiras tradicionais de criar uma String , uma implícita e outra explícita:
+String implicit = "Java";
+String explicit = new String("Java");
+
+Outras maneiras de criar Strings
+char[] name = new char[]{'j', 'a', 'v', 'a'};
+String array = new String(name);
+
+Ou ainda podemos criar uma String baseada em um StringBuilder ou StringBuffer:
+StringBuilder sb1 = new StringBuilder("Java");
+String nameBuilder = new String(sb1);
+
+StringBuffer sb2 = new StringBuffer("Java");
+String nameBuffer = new String(sb2);
+
+Caso tente concatenar null com uma String , temos a conversão de null para String :
+String nulled = null;
+System.out.println("value: " + nulled); // value: null, lembrando que null agora não é 'null' e sim uma palavra null, ou seja,
+uma string que possui os caracteres que formam a palavra null
+
+O Java faz a conversão de tipos primitivos para Strings automaticamente
+
+OBS: Precedência de operadores
+String str = 15 + 3 +  " Certification";
+System.out.println(str); // 18 Certification
+
+15 e 3 estão fazendo a soma, essa soma é concatenada com a string Certification, mas, a soma vem antes da concatenação, logo ela tem 
+precedência, dessa forma, o Java realiza primeiro a soma dos inteiros, para só então fazer a concatenação com a string.
+
+Strings são imutáveis, todos os métodos que parecem modificar uma string, na verdade devolvem uma nova.
+String s = "caelum";
+s.toUpperCase();
+System.out.println(s);
+// O método toUpperCase, devolve uma nova String, porém não há uma variável para capturar essa nova string. Ele também não altera
+a string s, dessa forma, no print, será imprimido, caelum.
+
+String s = "caelum";
+String s2 = s.toUpperCase();
+System.out.println(s2);
+// imprime CAELUM, pois a nova string retornada pelo toUpperCase() é capturada pela string s2.
+
+Para tratarmos de “strings mutáveis”, usamos as classes StringBuffer e StringBuilder.
+
+OBS: Estudar o CompareTo 
+
+int val = 10;
+int div = 4;
+double res = val / div;
+Resultado é 2.0, a divisão de 2 números inteiros é outro inteiro arredondado para baixo, neste caso em que a variável "res" é double
+o java faz a conversão, por isso 2.0.
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

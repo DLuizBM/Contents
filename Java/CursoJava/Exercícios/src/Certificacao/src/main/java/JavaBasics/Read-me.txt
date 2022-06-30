@@ -1,0 +1,120 @@
+Seção 3.3
+Para criar um .jar pelo prompt de comando, é necessário criar um arquivo Manifest,
+que pode ser .txt.
+O arquivo manifest contém o apontamento para a classe que é o ponto de entrada do programa, ou seja, 
+contém a classe que contém o método main.
+O arquivo manifest deve conter a seguinte instrução
+Main-Class: path_do_arquivo_que_contém_a_classe_a_ser_executada
+Ex: Main-classe: b.Main
+(Usar a notação ponto)
+
+Com o arquivo criado, basta criar o arquivo compilado, exemplo:
+javac b/Main.java
+
+Executar o comando para criar o .jar
+jar -cfm nome_do_jar.jar manifest.txt diretorio_da_classe_principal_e_demais_classes
+ex: jar -cfm bib.jar manifest.txt b
+
+Executar o jar criado
+java -jar bib.jar
+
+Atenção ao package criado na classe que contém o método mais. Podem haver erros ao tentar gerar o .jar
+caso o diretório esteja diferente neste arquivo e no manifest.
+
+Executar o java my_class, se for especificado um package na classe.
+Se for especificado um package na classe, isso deve ser levado em consideração para usar o comada java para executar
+uma classe executável.
+Para isso, deve-se estar um diretório antes do diretório da classe.
+Ex: C:\Divino\Contents\Contents-master\Java\CursoJava\Exercícios\Certificacao\src\main\java\JavaBasics
+É o diretório predecessor à pasta b, na pasta b se encontra o arquivo M.class que é o compilado de Main.java
+Para executar a classe executável M, precisamos estar não na pasta b, e sim no diretório especificado acima.
+Dessa forma, faz-se:
+java b.M
+E o programa executa normalmente. Porém, se formos para o diretório C:\Divino\Contents\Contents-master\Java\CursoJava\Exercícios\Certificacao\src\main\java\JavaBasics\b
+e tentarmos fazer java M, o programa não será executado.
+Para compilar, podemos estar na pasta b e usarmos javac Main.java ou podemos estar no diretório anterior e fazer java b\Main.java
+
+Compilação e execução
+
+Compilação e execução passando uma biblioteca
+javac -cp \path\library\library.jar; \path\class\Test.java
+java -cp \path\library\library.jar; \path\class.Test
+Compilação "\" no final, execução "." no final.
+Para compilar "\", pois estamos pensando em arquivos e diretórios, 
+Para executar ".", pois estamos pensando em pacotes e classes
+
+Criação e execução de .jar sem manifest
+jar -cf library.jar pasta_que_será_transformada_em_jar
+java -cp library.jar pasta_que_será_transformada_em_jar.classe_principal_com_método_main
+- É importante que todas as classes estejam compiladas para que funcione a execução
+Quando se cria o .jar sem manifeste, deve-se apontar na execução qual a classe principal a ser executada.
+
+Criação e execução de .jar com manifest
+jar -cfm library.jar manifest b
+java -jar library.jar
+
+Seção 3.4 - Importe outros pacotes Java e deixe-os acessíveis ao seu código
+
+Quando se tenta importar duas classes com o mesmo nome, é gerado um erro de compilação. O certo é importar uma
+e referenciar a outra.
+
+Exemplo:
+import java.util.Date;
+import java.sql.Date; // gera erro de compilação
+
+public class Person {
+	
+	Date data;
+	Date data2;
+	// o compilador não sabe qual Date usar
+	// o certo seria:
+	java.sql.Date data2; //Full Qualified Name.
+}
+
+Obs: Não existem subpacotes, exemplo
+package a.b;
+class ola {
+	public String ola = "Olá";
+}
+
+package a;
+class saudacao {
+	
+	b.ola hello = new b.ola();
+	/* Gera erro de compilação
+	   A classe ola está no pacote b e este está dentro do pacote a.
+	   b não é subpacote de a, por isso, fazer somente b.ola para encontrar
+	   a classe está errado, não existe subpacote. b é um pacote e deve ser
+	   tratado como tal. Por isso o correto a se fazer para utilizar a classe ola é:
+	   a.b.ola hello = new a.b.ola();
+	   ou 
+	   import a.b.ola;
+	*/
+	
+}
+
+Se houver um import específico e um genérico, o Java usa o específico
+import java.util.*;
+import java.sql.Date; 
+
+public class Person {
+	
+	Date data;
+	Date data2;
+	// O Date usado é o de java.sql.Date, pois é o específico
+}
+
+Se for feito:
+import java.util.*;
+import java.sql.*;
+Também gera erro de compilação. 
+
+Não há erro de compilação ou execução ao importar a mesma classe do mesmo pacote mais de uma vez, exemplo
+import java.util.Date;
+import java.util.Date;
+
+Import Static
+import static a.A.*;
+- Com o import static é possível importar todos os membros estáticos de uma classe, mas atenção, somente os membros
+estáticos. Nem a classe nem outros membros são importados. Se quisermos usar a classe, é necessário fazer um import 
+de maneira normal para a classe.
